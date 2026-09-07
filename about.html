@@ -1,0 +1,616 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>About — Jean Damas</title>
+<meta name="description" content="Content marketing and editorial leader turning content functions into growth engines for B2B SaaS companies." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Karla:ital,wght@0,400;0,500;0,600;1,400&family=Pacifico&family=Schibsted+Grotesk:wght@700;800&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    --cream:  #F3F4F6;
+    --orange: #056571;
+    --ink:    #0A0A0A;
+    --paper:  #FFFFFF;
+
+    --radius: 20px;
+    --gap: 24px;
+    --pad: clamp(20px, 3.1vw, 56px);
+  }
+
+  * { box-sizing: border-box; -webkit-font-smoothing: inherit; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--paper);
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  @supports (corner-shape: superellipse(2)) {
+    .card { corner-shape: superellipse(2); }
+  }
+
+  a { color: inherit; }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    max-width: 1760px;
+    margin: 0 auto;
+    padding: var(--gap) var(--gap) 0;
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-decoration: none;
+    color: rgba(10, 10, 10, 0.7);
+    transition: color 0.25s ease, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .back-link:hover,
+  .back-link:focus-visible {
+    color: var(--ink);
+    transform: translateX(-3px);
+  }
+  .back-link:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 4px;
+    border-radius: 4px;
+  }
+
+  .page {
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: var(--gap);
+  }
+
+  .about-grid {
+    width: 100%;
+    max-width: 1760px;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-areas: "left left right right right right";
+    align-items: stretch;
+    gap: var(--gap);
+  }
+
+  .card {
+    position: relative;
+    border-radius: var(--radius);
+    overflow: hidden;
+    padding: var(--pad);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  }
+
+  /* --- Left column: short statement --- */
+  .about-statement {
+    grid-area: left;
+    background: var(--orange);
+    color: var(--paper);
+    display: flex;
+    flex-direction: column;
+  }
+  .about-label {
+    margin: 0;
+    font-family: 'Pacifico', cursive;
+    font-weight: 400;
+    font-size: clamp(2.5rem, 4.75vw, 5.5rem);
+    line-height: 1;
+    letter-spacing: normal;
+  }
+  .about-statement-body {
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+    margin-top: clamp(20px, 3vw, 32px);
+  }
+  .about-scroll {
+    width: 100%;
+    height: clamp(200px, 26vw, 320px);
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.4) transparent;
+  }
+  .about-scroll::-webkit-scrollbar {
+    width: 5px;
+  }
+  .about-scroll::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.35);
+    border-radius: 4px;
+  }
+  .about-lede {
+    margin: 0;
+    font-family: 'Schibsted Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: clamp(1.8rem, 3.2vw, 2.7rem);
+    line-height: 1.5;
+    letter-spacing: -0.01em;
+  }
+  .about-lede .word {
+    display: inline-block;
+    opacity: 0.3;
+    transition: opacity 0.5s ease;
+  }
+  .about-lede .word.is-revealed {
+    opacity: 1;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .about-lede .word {
+      opacity: 1;
+      transition: none;
+    }
+  }
+
+  /* --- Right rectangle: full bio --- */
+  .about-bio {
+    grid-area: right;
+    background: var(--cream);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .fact-strip {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin: 0 0 32px;
+  }
+  .fact-row {
+    display: grid;
+    gap: 12px 14px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .fact-row--2 { grid-template-columns: repeat(2, max-content); }
+  .fact-row--3 { grid-template-columns: repeat(3, max-content); }
+  .fact-row li {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: 9999px;
+    font-family: 'Karla', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: -0.005em;
+    white-space: nowrap;
+  }
+  .fact-row li span {
+    font-size: 1.05em;
+    line-height: 1;
+  }
+  .tag-teal     { background: rgba(194, 65, 12, 0.16);   color: #C2410C; }
+  .tag-gold     { background: rgba(253, 181, 21, 0.3);   color: #003262; }
+  .tag-charcoal { background: rgba(10, 10, 10, 0.06);    color: #33272A; }
+  .tag-coral    { background: rgba(190, 24, 93, 0.13);   color: #BE185D; }
+  .tag-forest   { background: rgba(22, 101, 52, 0.14);   color: #166534; }
+  .tag-coffee   { background: rgba(120, 72, 34, 0.12);   color: #6B3A16; }
+  .tag-plum     { background: rgba(30, 64, 175, 0.13);   color: #1E40AF; }
+  .fact-row li {
+    background: var(--paper);
+    border: 1px solid rgba(10, 10, 10, 0.15);
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .about-bio p {
+    margin: 0 0 20px;
+    max-width: none;
+    font-family: 'Karla', sans-serif;
+    font-weight: 400;
+    font-size: 1.2rem;
+    line-height: 1.65;
+    color: rgba(10, 10, 10, 0.86);
+  }
+  .about-bio p:last-child {
+    margin-bottom: 0;
+  }
+  .about-bio p.about-greeting {
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .inline-link {
+    color: var(--orange);
+    text-decoration: underline;
+    text-decoration-color: rgba(5, 101, 113, 0.35);
+    text-underline-offset: 3px;
+    transition: text-decoration-color 0.25s ease;
+  }
+  .inline-link:hover,
+  .inline-link:focus-visible {
+    text-decoration-color: currentColor;
+  }
+  .inline-link:focus-visible {
+    outline: 2px solid var(--orange);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  /* --- Responsive: stack on narrow viewports --- */
+  @media (max-width: 860px) {
+    :root { --gap: 14px; --radius: 16px; }
+    .page { padding: 14px; }
+    .back-link { padding: 14px 14px 0; }
+    .about-grid {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "left"
+        "right";
+    }
+    .about-statement { min-height: 180px; }
+    .fact-row--2, .fact-row--3 { grid-template-columns: repeat(2, max-content); }
+    .floating-menu { top: 14px; right: 14px; }
+  }
+
+  /* --- Floating morph menu --- */
+  .floating-menu {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 200;
+    width: 150px;
+    height: 48px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 72px;
+    background: rgba(255, 181, 103, 0.8);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(219, 151, 72, 0.7);
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 1px 2px rgba(10, 10, 10, 0.08), 0 10px 24px -12px rgba(10, 10, 10, 0.3);
+    transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                height 0.15s cubic-bezier(0.22, 1, 0.36, 1),
+                border-radius 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.3s ease,
+                transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .floating-menu:hover {
+    transform: scale(1.05);
+  }
+  .floating-menu.is-open {
+    width: 280px;
+    height: 260px;
+    border-radius: 32px;
+    border: none;
+    cursor: default;
+    transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                height 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                border-radius 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                border-color 0.3s ease,
+                box-shadow 0.3s ease;
+  }
+  .floating-menu.is-open:hover {
+    transform: none;
+  }
+
+  .floating-menu-circle {
+    position: absolute;
+    left: 50%;
+    bottom: -200%;
+    width: 200%;
+    height: 200%;
+    border-radius: 50%;
+    background: rgba(5, 101, 113, 0.82);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    transform: translateX(-50%);
+    transition: bottom 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .floating-menu.is-open .floating-menu-circle {
+    bottom: -20%;
+    transition-delay: 0.1s;
+  }
+
+  .floating-menu-links {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    flex: 0;
+    min-height: 0;
+    overflow: hidden;
+    padding: 0 20px;
+  }
+  .floating-menu.is-open .floating-menu-links {
+    flex: 1;
+  }
+
+  .floating-menu-link {
+    position: relative;
+    display: flex;
+    color: var(--cream);
+    font-family: 'Schibsted Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    text-decoration: none;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+  }
+  .floating-menu.is-open .floating-menu-link {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .floating-menu.is-open .floating-menu-link:nth-child(1) { transition-delay: 0.4s; }
+  .floating-menu.is-open .floating-menu-link:nth-child(2) { transition-delay: 0.48s; }
+  .floating-menu.is-open .floating-menu-link:nth-child(3) { transition-delay: 0.56s; }
+  .floating-menu.is-open .floating-menu-link:nth-child(4) { transition-delay: 0.64s; }
+  .floating-menu-link:focus-visible {
+    outline: 2px solid var(--cream);
+    outline-offset: 4px;
+    border-radius: 2px;
+  }
+
+  /* Per-character hover flip, built by JS into nested spans */
+  .fm-char {
+    display: inline-block;
+    overflow: hidden;
+    height: 1em;
+  }
+  .fm-char-inner {
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .floating-menu-link:hover .fm-char-inner {
+    transform: translateY(-50%);
+  }
+  .fm-char-line {
+    display: block;
+    height: 1em;
+    line-height: 1em;
+  }
+
+  .floating-menu-bar {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 48px;
+    flex-shrink: 0;
+    padding: 0 20px;
+    background: none;
+    border: none;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    transition: padding-bottom 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .floating-menu.is-open .floating-menu-bar {
+    padding-bottom: 20px;
+  }
+  .floating-menu-label {
+    font-family: 'Pacifico', cursive;
+    font-size: 1.35rem;
+    font-weight: 400;
+    color: var(--ink);
+    transition: color 0.3s ease;
+  }
+  .floating-menu.is-open .floating-menu-label {
+    color: var(--cream);
+  }
+
+  .floating-menu-burger {
+    position: relative;
+    width: 18px;
+    height: 14px;
+    flex-shrink: 0;
+  }
+  .floating-menu-burger span {
+    position: absolute;
+    left: 0;
+    width: 18px;
+    height: 2px;
+    border-radius: 999px;
+    background: var(--ink);
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+                top 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+                background-color 0.3s ease;
+  }
+  .floating-menu-burger span:nth-child(1) { top: 3px; }
+  .floating-menu-burger span:nth-child(2) { top: 9px; }
+  .floating-menu.is-open .floating-menu-burger span {
+    background: var(--cream);
+  }
+  .floating-menu.is-open .floating-menu-burger span:nth-child(1) {
+    top: 6px;
+    transform: rotate(45deg);
+  }
+  .floating-menu.is-open .floating-menu-burger span:nth-child(2) {
+    top: 6px;
+    transform: rotate(-45deg);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .floating-menu,
+    .floating-menu.is-open,
+    .floating-menu-circle,
+    .floating-menu-link,
+    .floating-menu-bar,
+    .floating-menu-burger span,
+    .fm-char-inner {
+      transition: none;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="floating-menu" id="floatingMenu">
+    <span class="floating-menu-circle" aria-hidden="true"></span>
+    <nav class="floating-menu-links" id="floatingMenuLinks" aria-label="Site">
+      <a class="floating-menu-link" href="about.html" tabindex="-1" aria-current="page">About</a>
+      <a class="floating-menu-link" href="portfolio.html" tabindex="-1">Portfolio</a>
+      <a class="floating-menu-link" href="services.html" tabindex="-1">Services</a>
+      <a class="floating-menu-link" href="lets-talk.html" tabindex="-1">Let's Talk</a>
+    </nav>
+    <button class="floating-menu-bar" id="floatingMenuToggle" type="button" aria-expanded="false" aria-controls="floatingMenuLinks">
+      <span class="floating-menu-label">Menu</span>
+      <span class="floating-menu-burger" aria-hidden="true"><span></span><span></span></span>
+    </button>
+  </div>
+
+  <a class="back-link" href="index.html">&larr; Back to home</a>
+  <main class="page">
+    <div class="about-grid">
+      <section class="card about-statement">
+        <h1 class="about-label">About</h1>
+        <div class="about-statement-body">
+          <div class="about-scroll">
+            <p class="about-lede"><span class="word">Content</span> <span class="word">marketing</span> <span class="word">and</span> <span class="word">editorial</span> <span class="word">leader</span> <span class="word">turning</span> <span class="word">content</span> <span class="word">functions</span> <span class="word">into</span> <span class="word">growth</span> <span class="word">engines</span> <span class="word">for</span> <span class="word">B2B</span> <span class="word">SaaS</span> <span class="word">companies.</span></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="card about-bio">
+        <div class="fact-strip">
+          <ul class="fact-row fact-row--2">
+            <li class="tag-teal"><span aria-hidden="true">📍</span> LA local</li>
+            <li class="tag-gold"><span aria-hidden="true">🎓</span> Berkeley alum</li>
+          </ul>
+          <ul class="fact-row fact-row--3">
+            <li class="tag-charcoal"><span aria-hidden="true">🐈‍⬛</span> Cat mom</li>
+            <li class="tag-coral"><span aria-hidden="true">🎵</span> Live music lover</li>
+            <li class="tag-forest"><span aria-hidden="true">🌍</span> World wanderer</li>
+          </ul>
+          <ul class="fact-row fact-row--2">
+            <li class="tag-coffee"><span aria-hidden="true">☕</span> Fueled by cold brew</li>
+            <li class="tag-plum"><span aria-hidden="true">📝</span> Editorial nerd</li>
+          </ul>
+        </div>
+        <p class="about-greeting">Hi! Here's a bit more about me:</p>
+        <p>I started my career in journalism, reporting for the <a class="inline-link" href="https://www.bizjournals.com/sanfrancisco" target="_blank" rel="noopener noreferrer">San Francisco Business Times</a>. That training shapes how I work: evidence-based storytelling and critical thinking about how content reaches and influences audiences.</p>
+        <p>I brought that approach to Workest, the content hub from Zenefits (now <a class="inline-link" href="https://www.trinet.com/" target="_blank" rel="noopener noreferrer">TriNet</a>), growing our audience and building an editorial voice trusted by HR leaders. Most recently, I led content for <a class="inline-link" href="https://www.tebra.com/theintake" target="_blank" rel="noopener noreferrer">The Intake</a>, Tebra's editorial platform for independent physicians and medical billers — building a freelance contributor network and turning organic content into a high-growth lever.</p>
+        <p>Today, that means pairing sharp editorial judgment with real fluency in how content gets discovered: SEO, AI search, and the workflows behind both.</p>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    (function () {
+      var box = document.querySelector('.about-scroll');
+      var words = document.querySelectorAll('.about-lede .word');
+      if (!box || !words.length) return;
+
+      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduceMotion) {
+        words.forEach(function (w) { w.classList.add('is-revealed'); });
+        return;
+      }
+
+      var ticking = false;
+
+      function update() {
+        var range = box.scrollHeight - box.clientHeight;
+        // If the text doesn't actually overflow (e.g. very wide viewport),
+        // just show it fully revealed instead of leaving it stuck dim.
+        var progress = range > 0 ? box.scrollTop / range : 1;
+        progress = Math.max(0, Math.min(1, progress));
+
+        var revealCount = Math.round(progress * words.length);
+        words.forEach(function (w, i) {
+          w.classList.toggle('is-revealed', i < revealCount);
+        });
+        ticking = false;
+      }
+
+      function onScroll() {
+        if (!ticking) {
+          window.requestAnimationFrame(update);
+          ticking = true;
+        }
+      }
+
+      box.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll);
+      update();
+    })();
+  </script>
+
+  <script>
+    (function () {
+      // Split each nav link's text into per-character spans so hover can
+      // flip each letter up (like a rolodex), staggered left to right.
+      document.querySelectorAll('.floating-menu-link').forEach(function (link) {
+        var text = link.textContent;
+        link.setAttribute('aria-label', text);
+        link.textContent = '';
+        text.split('').forEach(function (ch, i) {
+          var outer = document.createElement('span');
+          outer.className = 'fm-char';
+          var inner = document.createElement('span');
+          inner.className = 'fm-char-inner';
+          inner.style.transitionDelay = (30 * i) + 'ms';
+          var line1 = document.createElement('span');
+          line1.className = 'fm-char-line';
+          line1.textContent = ch === ' ' ? ' ' : ch;
+          var line2 = line1.cloneNode(true);
+          line2.setAttribute('aria-hidden', 'true');
+          inner.appendChild(line1);
+          inner.appendChild(line2);
+          outer.appendChild(inner);
+          link.appendChild(outer);
+        });
+      });
+    })();
+  </script>
+
+  <script>
+    (function () {
+      var menu = document.getElementById('floatingMenu');
+      var toggle = document.getElementById('floatingMenuToggle');
+      var links = document.querySelectorAll('.floating-menu-link');
+      if (!menu || !toggle) return;
+
+      function setOpen(open) {
+        menu.classList.toggle('is-open', open);
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        links.forEach(function (l) { l.tabIndex = open ? 0 : -1; });
+      }
+
+      toggle.addEventListener('click', function (e) {
+        e.stopPropagation();
+        setOpen(!menu.classList.contains('is-open'));
+      });
+
+      // Clicking anywhere else on the pill opens it (mirrors the source component).
+      menu.addEventListener('click', function () {
+        if (!menu.classList.contains('is-open')) setOpen(true);
+      });
+
+      document.addEventListener('click', function (e) {
+        if (menu.classList.contains('is-open') && !menu.contains(e.target)) {
+          setOpen(false);
+        }
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && menu.classList.contains('is-open')) {
+          setOpen(false);
+          toggle.focus();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

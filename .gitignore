@@ -1,0 +1,4 @@
+node_modules/
+temporary screeenshots/
+.claude/settings.local.json
+.DS_Store

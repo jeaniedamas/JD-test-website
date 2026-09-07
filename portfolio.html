@@ -1,0 +1,1359 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Portfolio — Jean Damas</title>
+<meta name="description" content="Selected work spanning journalism, B2B SaaS content, and editorial strategy." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Karla:wght@400;500;600;700&family=Pacifico&family=Schibsted+Grotesk:wght@700;800&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    --cream:  #FEF5EA;
+    --writing-bg: #F5F2EC;
+    --experience-bg: #F0F2EF;
+    --mint:   #CCDFCB;
+    --accent: #004952;
+    --ink:    #0A0A0A;
+    --paper:  #FFFFFF;
+
+    --radius: 20px;
+    --gap: 24px;
+    --pad: clamp(20px, 3.1vw, 56px);
+  }
+
+  * { box-sizing: border-box; -webkit-font-smoothing: inherit; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--paper);
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  @supports (corner-shape: superellipse(2)) {
+    .card { corner-shape: superellipse(2); }
+  }
+
+  a { color: inherit; }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    max-width: 1760px;
+    margin: 0 auto;
+    padding: var(--gap) var(--gap) 0;
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-decoration: none;
+    color: rgba(10, 10, 10, 0.7);
+    transition: color 0.25s ease, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .back-link:hover,
+  .back-link:focus-visible {
+    color: var(--ink);
+    transform: translateX(-3px);
+  }
+  .back-link:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 4px;
+    border-radius: 4px;
+  }
+
+  .page {
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: var(--gap);
+  }
+
+  .portfolio-grid {
+    width: 100%;
+    max-width: 1760px;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-areas:
+      "left left right right right right"
+      "writing writing writing writing writing writing";
+    align-items: stretch;
+    gap: var(--gap);
+  }
+
+  .card {
+    position: relative;
+    border-radius: var(--radius);
+    overflow: hidden;
+    padding: var(--pad);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  }
+
+  /* --- Left column: page heading --- */
+  .portfolio-intro {
+    grid-area: left;
+    background: var(--mint);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .portfolio-intro h1 {
+    margin: 0;
+    font-family: 'Pacifico', cursive;
+    font-weight: 400;
+    font-size: clamp(2.5rem, 4.75vw, 5.5rem);
+    line-height: 1;
+    letter-spacing: normal;
+  }
+  .portfolio-intro p {
+    margin: 20px 0 0;
+    max-width: 32ch;
+    font-family: 'Karla', sans-serif;
+    font-weight: 400;
+    font-size: clamp(1.15rem, 1.8vw, 1.5rem);
+    line-height: 1.5;
+    color: rgba(10, 10, 10, 0.8);
+  }
+
+  /* --- Full-width block: experience (built once role details are confirmed) --- */
+
+  /* --- Right rectangle: published writing --- */
+  .portfolio-writing {
+    grid-area: right;
+    background: var(--writing-bg);
+  }
+  .portfolio-writing h2 {
+    margin: 0 0 32px;
+    font-family: 'Schibsted Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: clamp(1.6rem, 2.6vw, 2.35rem);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+  .writing-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: clamp(24px, 4vw, 56px);
+  }
+  .writing-accordion {
+    flex: 1 1 50%;
+    min-width: 0;
+  }
+  .waccordion-item {
+    border-bottom: 1px solid rgba(10, 10, 10, 0.12);
+  }
+  .waccordion-item:last-child {
+    border-bottom: none;
+  }
+  .waccordion-item h3 {
+    margin: 0;
+  }
+  .waccordion-trigger {
+    display: block;
+    width: 100%;
+    padding: 20px 0;
+    background: none;
+    border: none;
+    font-family: 'Schibsted Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+    letter-spacing: -0.01em;
+    text-align: left;
+    color: rgba(10, 10, 10, 0.4);
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  .waccordion-item.is-active .waccordion-trigger {
+    color: var(--ink);
+  }
+  .waccordion-trigger:hover {
+    color: var(--ink);
+  }
+  .waccordion-trigger:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+  .waccordion-content {
+    height: 0;
+    overflow: hidden;
+    transition: height 0.3s ease-out;
+  }
+  .waccordion-content-inner {
+    padding: 0 0 24px;
+  }
+  .waccordion-content-inner p {
+    margin: 0 0 16px;
+    font-family: 'Karla', sans-serif;
+    font-weight: 400;
+    font-size: 1.2rem;
+    line-height: 1.65;
+    color: rgba(10, 10, 10, 0.75);
+  }
+  .waccordion-content-inner .inline-link {
+    color: var(--accent);
+    text-decoration: underline;
+    text-decoration-color: rgba(0, 73, 82, 0.35);
+    text-underline-offset: 3px;
+    transition: text-decoration-color 0.2s ease;
+  }
+  .waccordion-content-inner .inline-link:hover,
+  .waccordion-content-inner .inline-link:focus-visible {
+    text-decoration-color: currentColor;
+  }
+  .waccordion-content-inner .inline-link:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  /* --- Thumbnail carousel (campaign asset examples) --- */
+  .thumb-carousel {
+    position: relative;
+    width: 97%;
+    margin: 4px 0 16px;
+  }
+  .thumb-carousel-viewport {
+    overflow: hidden;
+  }
+  .thumb-carousel-track {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .thumb-card {
+    flex: 0 0 auto;
+    margin-right: 12px;
+  }
+  .thumb-card:last-child {
+    margin-right: 0;
+  }
+  .thumb-card-inner {
+    position: relative;
+    display: block;
+    width: 100%;
+    aspect-ratio: 480 / 626;
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--paper);
+    border: none;
+    padding: 0;
+    cursor: default;
+    box-shadow: 0 1px 2px rgba(10, 10, 10, 0.06), 0 10px 20px -12px rgba(10, 10, 10, 0.3);
+  }
+  .thumb-card-inner img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .thumb-card-inner:hover img,
+  .thumb-card-inner:focus-visible img {
+    transform: scale(1.05);
+  }
+  .thumb-card-caption {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: flex-end;
+    padding: 14px;
+    background: rgba(10, 10, 10, 0.86);
+    transform: translateY(100%);
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    overflow-y: auto;
+  }
+  .thumb-card-inner:hover .thumb-card-caption,
+  .thumb-card-inner:focus-visible .thumb-card-caption {
+    transform: translateY(0);
+  }
+  .thumb-card-caption p {
+    margin: 0;
+    font-family: 'Karla', sans-serif;
+    font-weight: 400;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: var(--paper);
+  }
+  .thumb-card-inner:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+  .thumb-carousel-btn {
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: rgba(10, 10, 10, 0.55);
+    color: var(--paper);
+    border: none;
+    cursor: pointer;
+    transform: translateY(-50%);
+    transition: background-color 0.25s ease, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .thumb-carousel-btn:hover,
+  .thumb-carousel-btn:focus-visible {
+    background: var(--accent);
+  }
+  .thumb-carousel-btn:focus-visible {
+    outline: 2px solid var(--paper);
+    outline-offset: 2px;
+  }
+  .thumb-carousel-btn:active {
+    transform: translateY(-50%) scale(0.94);
+  }
+  .thumb-carousel-btn:disabled {
+    opacity: 0.35;
+    cursor: default;
+  }
+  .thumb-carousel-btn[hidden] {
+    display: none;
+  }
+  .thumb-carousel-prev { left: -6px; }
+  .thumb-carousel-next { right: -6px; }
+  .thumb-carousel-btn svg { width: 16px; height: 16px; }
+  @media (prefers-reduced-motion: reduce) {
+    .thumb-carousel-track,
+    .thumb-card-inner img,
+    .thumb-card-caption,
+    .thumb-carousel-btn {
+      transition: none;
+    }
+  }
+
+  .waccordion-mobile-image {
+    display: none;
+    margin-top: 16px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--paper);
+    padding: 24px;
+  }
+  .waccordion-mobile-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 100px;
+    object-fit: contain;
+    margin: 0 auto;
+  }
+  .writing-preview {
+    flex: 1 1 50%;
+    position: relative;
+    aspect-ratio: 4 / 3;
+    background: var(--paper);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 1px 2px rgba(10, 10, 10, 0.06), 0 18px 34px -18px rgba(0, 73, 82, 0.35);
+  }
+  .writing-preview-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+  }
+  .writing-preview-image.is-fading {
+    opacity: 0;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .waccordion-trigger { transition: none; }
+    .waccordion-content { transition: none; }
+    .writing-preview-image { transition: none; }
+  }
+  .cta-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--paper);
+    background: var(--accent);
+    padding: 12px 20px;
+    border-radius: 10px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08), 0 6px 14px -8px rgba(0, 73, 82, 0.5);
+    text-decoration: none;
+    transition: background-color 0.25s ease, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.25s ease;
+  }
+  .cta-link:hover,
+  .cta-link:focus-visible {
+    background: #003339;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px -2px rgba(0, 0, 0, 0.1), 0 10px 20px -8px rgba(0, 73, 82, 0.55);
+  }
+  .cta-link:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+  }
+  .cta-link:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+  .cta-link .arrow {
+    display: inline-block;
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .cta-link:hover .arrow,
+  .cta-link:focus-visible .arrow {
+    transform: translateX(4px);
+  }
+
+  /* --- Full-width block: experience --- */
+  .portfolio-experience {
+    grid-area: writing;
+    background: var(--experience-bg);
+    padding-left: clamp(24px, 6vw, 100px);
+    padding-right: clamp(24px, 6vw, 100px);
+  }
+  .portfolio-experience h2 {
+    margin: 0 0 24px;
+    font-family: 'Schibsted Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: clamp(1.6rem, 2.6vw, 2.35rem);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+  .experience-list {
+    display: flex;
+    flex-direction: column;
+  }
+  .experience-item {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr 1.6fr;
+    gap: 32px;
+    padding: 36px 20px;
+    margin: 0 -20px;
+    border-bottom: 1px solid rgba(10, 10, 10, 0.1);
+    border-radius: 12px;
+    transition: background-color 0.3s ease,
+                opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .experience-item:last-child {
+    border-bottom: none;
+  }
+  .experience-item:hover {
+    background: rgba(10, 10, 10, 0.04);
+  }
+  .experience-header h3 {
+    margin: 0 0 6px;
+    font-family: 'Schibsted Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: clamp(1.4rem, 2vw, 1.75rem);
+    letter-spacing: -0.01em;
+  }
+  .experience-period {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    font-variant-numeric: tabular-nums;
+    color: rgba(10, 10, 10, 0.6);
+  }
+  .experience-meta {
+    margin: 0;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-content: start;
+    row-gap: 10px;
+    column-gap: 16px;
+  }
+  .experience-meta dt {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.05rem;
+    color: rgba(10, 10, 10, 0.6);
+  }
+  .experience-meta dd {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 1.05rem;
+  }
+  .experience-description {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .experience-description p {
+    margin: 0;
+    font-family: 'Karla', sans-serif;
+    font-size: 1.2rem;
+    line-height: 1.65;
+    color: rgba(10, 10, 10, 0.8);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .experience-item { transition: none; }
+  }
+
+  /* --- Staggered reveal: each role fades/slides in after the previous one ---
+     Transition timing lives on .experience-item / .experience-group themselves
+     (alongside their hover transitions) so the two don't clobber each other. */
+  .experience-reveal {
+    opacity: 0;
+    transform: translateY(56px) scale(0.97);
+  }
+  .experience-reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  /* --- Grouped entries: multiple roles at the same company --- */
+  .experience-group {
+    padding: 36px 20px 20px;
+    margin: 0 -20px;
+    border-bottom: 1px solid rgba(10, 10, 10, 0.1);
+    transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .experience-group:last-child {
+    border-bottom: none;
+  }
+  .experience-group-header h3 {
+    margin: 0;
+    font-family: 'Schibsted Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: clamp(1.4rem, 2vw, 1.75rem);
+    letter-spacing: -0.01em;
+  }
+  .experience-role {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr 1.6fr;
+    gap: 32px;
+    padding: 20px 4px;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+  }
+  .experience-role:hover {
+    background: rgba(10, 10, 10, 0.04);
+  }
+  .experience-role + .experience-role {
+    border-top: 1px dashed rgba(10, 10, 10, 0.15);
+    margin-top: 4px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .experience-role { transition: none; }
+    .experience-group { transition: none; }
+  }
+
+  .experience-intro {
+    margin: 0 0 12px;
+    font-family: 'Karla', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    font-style: normal;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  /* --- Responsive: stack on narrow viewports --- */
+  @media (max-width: 860px) {
+    :root { --gap: 14px; --radius: 16px; }
+    .page { padding: 14px; }
+    .back-link { padding: 14px 14px 0; }
+    .portfolio-grid {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "left"
+        "right"
+        "writing";
+    }
+    .portfolio-intro { min-height: 220px; }
+    .writing-feature {
+      flex-direction: column;
+      gap: 0;
+    }
+    .writing-accordion { flex: 1 1 auto; width: 100%; }
+    .writing-preview { display: none; }
+    .waccordion-mobile-image { display: block; }
+    .experience-item {
+      grid-template-columns: 1fr;
+      gap: 16px;
+      padding: 28px 14px;
+      margin: 0 -14px;
+    }
+    .experience-group {
+      padding: 28px 14px 14px;
+      margin: 0 -14px;
+    }
+    .experience-role {
+      grid-template-columns: 1fr;
+      gap: 16px;
+      padding: 16px 4px;
+    }
+    .floating-menu { top: 14px; right: 14px; }
+  }
+
+  /* --- Floating morph menu --- */
+  .floating-menu {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 200;
+    width: 150px;
+    height: 48px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 72px;
+    background: rgba(255, 181, 103, 0.8);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(219, 151, 72, 0.7);
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 1px 2px rgba(10, 10, 10, 0.08), 0 10px 24px -12px rgba(10, 10, 10, 0.3);
+    transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                height 0.15s cubic-bezier(0.22, 1, 0.36, 1),
+                border-radius 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.3s ease,
+                transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .floating-menu:hover {
+    transform: scale(1.05);
+  }
+  .floating-menu.is-open {
+    width: 280px;
+    height: 260px;
+    border-radius: 32px;
+    border: none;
+    cursor: default;
+    transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                height 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                border-radius 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                border-color 0.3s ease,
+                box-shadow 0.3s ease;
+  }
+  .floating-menu.is-open:hover {
+    transform: none;
+  }
+
+  .floating-menu-circle {
+    position: absolute;
+    left: 50%;
+    bottom: -200%;
+    width: 200%;
+    height: 200%;
+    border-radius: 50%;
+    background: rgba(5, 101, 113, 0.82);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    transform: translateX(-50%);
+    transition: bottom 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .floating-menu.is-open .floating-menu-circle {
+    bottom: -20%;
+    transition-delay: 0.1s;
+  }
+
+  .floating-menu-links {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    flex: 0;
+    min-height: 0;
+    overflow: hidden;
+    padding: 0 20px;
+  }
+  .floating-menu.is-open .floating-menu-links {
+    flex: 1;
+  }
+
+  .floating-menu-link {
+    position: relative;
+    display: flex;
+    color: var(--cream);
+    font-family: 'Schibsted Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    text-decoration: none;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+  }
+  .floating-menu.is-open .floating-menu-link {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .floating-menu.is-open .floating-menu-link:nth-child(1) { transition-delay: 0.4s; }
+  .floating-menu.is-open .floating-menu-link:nth-child(2) { transition-delay: 0.48s; }
+  .floating-menu.is-open .floating-menu-link:nth-child(3) { transition-delay: 0.56s; }
+  .floating-menu.is-open .floating-menu-link:nth-child(4) { transition-delay: 0.64s; }
+  .floating-menu-link:focus-visible {
+    outline: 2px solid var(--cream);
+    outline-offset: 4px;
+    border-radius: 2px;
+  }
+
+  /* Per-character hover flip, built by JS into nested spans */
+  .fm-char {
+    display: inline-block;
+    overflow: hidden;
+    height: 1em;
+  }
+  .fm-char-inner {
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .floating-menu-link:hover .fm-char-inner {
+    transform: translateY(-50%);
+  }
+  .fm-char-line {
+    display: block;
+    height: 1em;
+    line-height: 1em;
+  }
+
+  .floating-menu-bar {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 48px;
+    flex-shrink: 0;
+    padding: 0 20px;
+    background: none;
+    border: none;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    transition: padding-bottom 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .floating-menu.is-open .floating-menu-bar {
+    padding-bottom: 20px;
+  }
+  .floating-menu-label {
+    font-family: 'Pacifico', cursive;
+    font-size: 1.35rem;
+    font-weight: 400;
+    color: var(--ink);
+    transition: color 0.3s ease;
+  }
+  .floating-menu.is-open .floating-menu-label {
+    color: var(--cream);
+  }
+
+  .floating-menu-burger {
+    position: relative;
+    width: 18px;
+    height: 14px;
+    flex-shrink: 0;
+  }
+  .floating-menu-burger span {
+    position: absolute;
+    left: 0;
+    width: 18px;
+    height: 2px;
+    border-radius: 999px;
+    background: var(--ink);
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+                top 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+                background-color 0.3s ease;
+  }
+  .floating-menu-burger span:nth-child(1) { top: 3px; }
+  .floating-menu-burger span:nth-child(2) { top: 9px; }
+  .floating-menu.is-open .floating-menu-burger span {
+    background: var(--cream);
+  }
+  .floating-menu.is-open .floating-menu-burger span:nth-child(1) {
+    top: 6px;
+    transform: rotate(45deg);
+  }
+  .floating-menu.is-open .floating-menu-burger span:nth-child(2) {
+    top: 6px;
+    transform: rotate(-45deg);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .floating-menu,
+    .floating-menu.is-open,
+    .floating-menu-circle,
+    .floating-menu-link,
+    .floating-menu-bar,
+    .floating-menu-burger span,
+    .fm-char-inner {
+      transition: none;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="floating-menu" id="floatingMenu">
+    <span class="floating-menu-circle" aria-hidden="true"></span>
+    <nav class="floating-menu-links" id="floatingMenuLinks" aria-label="Site">
+      <a class="floating-menu-link" href="about.html" tabindex="-1">About</a>
+      <a class="floating-menu-link" href="portfolio.html" tabindex="-1" aria-current="page">Portfolio</a>
+      <a class="floating-menu-link" href="services.html" tabindex="-1">Services</a>
+      <a class="floating-menu-link" href="lets-talk.html" tabindex="-1">Let's Talk</a>
+    </nav>
+    <button class="floating-menu-bar" id="floatingMenuToggle" type="button" aria-expanded="false" aria-controls="floatingMenuLinks">
+      <span class="floating-menu-label">Menu</span>
+      <span class="floating-menu-burger" aria-hidden="true"><span></span><span></span></span>
+    </button>
+  </div>
+
+  <a class="back-link" href="index.html">&larr; Back to home</a>
+  <main class="page">
+    <div class="portfolio-grid">
+      <section class="card portfolio-intro">
+        <h1>Portfolio</h1>
+        <p>Selected work spanning journalism, B2B SaaS content, and editorial strategy.</p>
+      </section>
+
+      <section class="card portfolio-writing">
+        <h2>Writing and Impact</h2>
+        <div class="writing-feature">
+          <div class="writing-accordion">
+            <div class="waccordion-item is-active">
+              <h3>
+                <button class="waccordion-trigger" type="button" aria-expanded="true" aria-controls="w-content-1" id="w-trigger-1" data-image="brand_assets/The%20Intake%20homepage.jpg" data-alt="The Intake homepage">
+                  The Intake by Tebra
+                </button>
+              </h3>
+              <div class="waccordion-content" id="w-content-1" role="region" aria-labelledby="w-trigger-1">
+                <div class="waccordion-content-inner">
+                  <p>Led content strategy for The Intake, Tebra's editorial platform for independent physicians and medical billers, growing organic search to 70M annual impressions and driving 16% YOY lead growth.</p>
+                  <a class="cta-link" href="https://www.tebra.com/theintake/author/jean-lee" target="_blank" rel="noopener noreferrer">View author page <span class="arrow">&rarr;</span></a>
+                  <div class="waccordion-mobile-image"><img src="brand_assets/The%20Intake%20homepage.jpg" alt="The Intake homepage" /></div>
+                </div>
+              </div>
+            </div>
+            <div class="waccordion-item">
+              <h3>
+                <button class="waccordion-trigger" type="button" aria-expanded="false" aria-controls="w-content-2" id="w-trigger-2" data-image="brand_assets/Workest%20Zenefits%20homepage.jpg" data-alt="Workest homepage">
+                  Workest by Zenefits
+                </button>
+              </h3>
+              <div class="waccordion-content" id="w-content-2" role="region" aria-labelledby="w-trigger-2">
+                <div class="waccordion-content-inner">
+                  <p>Led content strategy for Workest, a Zenefits media website reaching up to 500,000 monthly pageviews, growing e-newsletter subscribers 45% to over 100K (<a class="inline-link" href="brand_assets/clips/Instagram%20Edges%20out%20LinkedIn%20for%20Top%20Spot%20for%20Social%20Media%20for%20Businesses%20_%20Workest.pdf" target="_blank" rel="noopener noreferrer">sample here</a>).</p>
+                  <p>Also oversaw ideation, execution, and analysis of 20+ demand generation assets and campaigns, with examples below:</p>
+                  <div class="waccordion-mobile-image"><img src="brand_assets/Workest%20Zenefits%20homepage.jpg" alt="Workest homepage" /></div>
+
+                  <!-- Add more .thumb-card entries here as more demand-gen assets become available -->
+                  <div class="thumb-carousel" data-cards-per-view="3">
+                    <button class="thumb-carousel-btn thumb-carousel-prev" type="button" aria-label="Previous examples">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+                    </button>
+                    <button class="thumb-carousel-btn thumb-carousel-next" type="button" aria-label="Next examples">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+                    </button>
+                    <div class="thumb-carousel-viewport">
+                      <div class="thumb-carousel-track">
+                        <div class="thumb-card" data-img="brand_assets/make%20ben%20easier.jpg" data-caption="Tips to Make Benefits Administration Easier — eBook checklist and guide."></div>
+                        <div class="thumb-card" data-img="brand_assets/future%20of%20benefits.jpg" data-caption="The Future of Benefits: 5 Trends You Need to Know — eBook."></div>
+                        <div class="thumb-card" data-img="brand_assets/performance%20reviews.jpg" data-caption="A New Way to Approach Employee Performance Reviews — HR guide to creating performance reviews that work."></div>
+                        <div class="thumb-card" data-img="brand_assets/POPs%20guide%20employee%20well-being.jpg" data-caption="People Operations Guide and Checklist for Employee Well-Being — #POPS."></div>
+                        <div class="thumb-card" data-img="brand_assets/HRIS.jpg" data-caption="HR Guide to Point Solutions vs. All-in-One HRIS — point vs. platform pros and cons."></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="waccordion-item">
+              <h3>
+                <button class="waccordion-trigger" type="button" aria-expanded="false" aria-controls="w-content-3" id="w-trigger-3" data-image="brand_assets/SFBT%20homepage.png" data-alt="San Francisco Business Times homepage">
+                  San Francisco Business Times
+                </button>
+              </h3>
+              <div class="waccordion-content" id="w-content-3" role="region" aria-labelledby="w-trigger-3">
+                <div class="waccordion-content-inner">
+                  <p>Reported and researched for the San Francisco Business Times, a publication with over two million monthly pageviews at the time, contributing data-driven stories, industry reports, and the 2018 Book of Lists.</p>
+                  <a class="cta-link" href="https://www.bizjournals.com/sanfrancisco/bio/34152/Jean+Lee" target="_blank" rel="noopener noreferrer">View clips <span class="arrow">&rarr;</span></a>
+                  <div class="waccordion-mobile-image"><img src="brand_assets/SFBT%20homepage.png" alt="San Francisco Business Times homepage" /></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="writing-preview" aria-hidden="true">
+            <img class="writing-preview-image" src="brand_assets/The%20Intake%20homepage.jpg" alt="The Intake homepage" />
+          </div>
+        </div>
+      </section>
+
+      <section class="card portfolio-experience">
+        <p class="experience-intro">The complete picture: my experience, role by role.</p>
+        <h2>Experience</h2>
+        <div class="experience-list">
+
+          <div class="experience-item">
+            <div class="experience-header">
+              <h3>Tebra</h3>
+              <p class="experience-period">Feb '23 — Feb '26</p>
+            </div>
+            <dl class="experience-meta">
+              <dt>Position</dt><dd>Senior Content Marketing Manager</dd>
+              <dt>Location</dt><dd>Remote</dd>
+              <dt>Industry</dt><dd>Healthtech</dd>
+            </dl>
+            <div class="experience-description">
+              <p>Owned editorial strategy and content calendar across two site experiences and email newsletters, managing a network of 15 freelance writers, editors, and expert reviewers to maintain consistent output and quality standards. Partnered cross-functionally to align content with business messaging and priorities, while writing and editing multi-format content that translated complex subject matter into credible, compelling stories.</p>
+              <p>Established editorial standards for internal teams, contributors, and agencies, and built AI-assisted workflows around ideation, briefs, editing, review, publication, and optimization to support scalable execution. Grew organic search performance to 70M annual impressions through SEO, AEO, and GEO strategies, drove +16% YOY lead growth and $500K+ in influenced revenue through intent-aligned content, and expanded newsletter subscribers 81% YOY.</p>
+            </div>
+          </div>
+
+          <div class="experience-group">
+            <div class="experience-group-header">
+              <h3>Zenefits</h3>
+            </div>
+
+            <div class="experience-role">
+              <div class="experience-header">
+                <p class="experience-period">Aug '21 — Feb '23</p>
+              </div>
+              <dl class="experience-meta">
+                <dt>Position</dt><dd>Content Marketing Manager / Managing Editor</dd>
+                <dt>Location</dt><dd>Remote</dd>
+                <dt>Industry</dt><dd>HR Tech</dd>
+              </dl>
+              <div class="experience-description">
+                <p>Managed Workest, a news and resource hub with up to 500,000 monthly pageviews, applying data-driven insights and editorial judgment to shape coverage priorities and drive audience growth. Led the full content publishing process for a team of 12 freelance writers and editors, coordinating with subject matter experts and executive stakeholders to deliver content aligned to audience needs and business objectives.</p>
+                <p>Grew e-newsletter subscribers 45% in 16 months to 100K+, expanding reach through consistent programming and distribution strategy.</p>
+              </div>
+            </div>
+
+            <div class="experience-role">
+              <div class="experience-header">
+                <p class="experience-period">Oct '19 — Aug '21</p>
+              </div>
+              <dl class="experience-meta">
+                <dt>Position</dt><dd>Freelance Editor / Demand Gen Campaign Manager</dd>
+                <dt>Location</dt><dd>Remote</dd>
+                <dt>Industry</dt><dd>HR Tech</dd>
+              </dl>
+              <div class="experience-description">
+                <p>Led ideation, execution, and analysis of 20+ demand generation campaigns across multiple channels, translating complex systems and technical information into clear narratives and differentiated positioning. Produced assets across formats — eBooks, whitepapers, reports, email sequences, interactive tools, infographics, and landing pages — building a content library that supported pipeline objectives and enabled reuse across channels.</p>
+                <p>Partnered with sales, product marketing, customer success, and design to coordinate creative development and brand storytelling across initiatives.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="experience-item">
+            <div class="experience-header">
+              <h3>Educational Alliance</h3>
+              <p class="experience-period">Nov '18 — Feb '20</p>
+            </div>
+            <dl class="experience-meta">
+              <dt>Position</dt><dd>Marketing and Communications Coordinator</dd>
+              <dt>Location</dt><dd>New York, NY</dd>
+              <dt>Industry</dt><dd>Nonprofit</dd>
+            </dl>
+            <div class="experience-description">
+              <p>Owned social media content to highlight the work of the organization and its 15 sites, increasing Instagram followers by 130%.</p>
+              <p>Produced a variety of marketing materials and campaigns, including website content, emails, landing pages, photography, video, and print collateral.</p>
+            </div>
+          </div>
+
+          <div class="experience-item">
+            <div class="experience-header">
+              <h3>Bay Area Rapid Transit</h3>
+              <p class="experience-period">Mar '18 — Jun '19</p>
+            </div>
+            <dl class="experience-meta">
+              <dt>Position</dt><dd>Marketing Assistant (Contract) / Freelance Writer</dd>
+              <dt>Location</dt><dd>Remote</dd>
+              <dt>Industry</dt><dd>Public Transit</dd>
+            </dl>
+            <div class="experience-description">
+              <p>Supported marketing operations for one of the U.S.'s busiest transit systems, helping develop and manage BARTable, a community-driven website, and grow social media platforms through content, A/B testing, and strategic campaigns.</p>
+              <p>Wrote editorial and lifestyle content published on the website and in weekly e-newsletters, aligning topics with marketing and communications objectives to engage and grow commuter audiences.</p>
+            </div>
+          </div>
+
+          <div class="experience-item">
+            <div class="experience-header">
+              <h3>San Francisco Business Times</h3>
+              <p class="experience-period">Oct '16 — Dec '17</p>
+            </div>
+            <dl class="experience-meta">
+              <dt>Position</dt><dd>Researcher</dd>
+              <dt>Location</dt><dd>San Francisco, CA</dd>
+              <dt>Industry</dt><dd>Media</dd>
+            </dl>
+            <div class="experience-description">
+              <p>Researched and analyzed Bay Area business data, generating weekly industry reports across nonprofits, food and hospitality, philanthropy, real estate, and technology, and published data-driven stories, blog posts, profiles, and multimedia packages for a publication with over two million monthly pageviews. Proofread, fact-checked, and coauthored the 2018 Book of Lists, a widely circulated Bay Area business resource.</p>
+              <p>Pitched research-based story and project ideas during editorial brainstorm meetings, demonstrating ownership and creative strategy in shaping original content angles.</p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <script>
+    (function () {
+      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduceMotion) return;
+
+      var headline = document.querySelector('.portfolio-intro h1');
+      var subtitle = document.querySelector('.portfolio-intro p');
+      if (!headline || !subtitle) return;
+
+      // Types out an element's own text content one character at a time,
+      // mirroring TypingAnimation's substring-growth approach.
+      function typeText(el, speed) {
+        var fullText = el.textContent;
+        var i = 0;
+        el.textContent = '';
+        var timer = setInterval(function () {
+          if (i < fullText.length) {
+            el.textContent = fullText.substring(0, i + 1);
+            i++;
+          } else {
+            clearInterval(timer);
+          }
+        }, speed);
+      }
+
+      // The component's 200ms/char default suits a short 17-char demo string;
+      // our headline and (much longer) subtitle use a faster pace so the
+      // subtitle doesn't take 15+ seconds to finish typing.
+      typeText(headline, 60);
+      typeText(subtitle, 35);
+    })();
+  </script>
+
+  <script>
+    (function () {
+      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var items = document.querySelectorAll('.waccordion-item');
+      var previewImage = document.querySelector('.writing-preview-image');
+
+      function open(trigger, content) {
+        trigger.setAttribute('aria-expanded', 'true');
+        if (reduceMotion) {
+          content.style.height = 'auto';
+          return;
+        }
+        content.style.height = content.scrollHeight + 'px';
+        content.addEventListener('transitionend', function handler(e) {
+          if (e.propertyName !== 'height') return;
+          content.style.height = 'auto';
+          content.removeEventListener('transitionend', handler);
+        });
+      }
+
+      function close(trigger, content) {
+        trigger.setAttribute('aria-expanded', 'false');
+        if (reduceMotion) {
+          content.style.height = '0';
+          return;
+        }
+        // If height is "auto", snap to the pixel value first so the
+        // browser has something concrete to transition down from.
+        content.style.height = content.scrollHeight + 'px';
+        void content.offsetHeight;
+        content.style.height = '0px';
+      }
+
+      function swapPreviewImage(src, alt) {
+        if (!previewImage || previewImage.src.indexOf(src) !== -1) return;
+        if (reduceMotion) {
+          previewImage.src = src;
+          previewImage.alt = alt || '';
+          return;
+        }
+        previewImage.classList.add('is-fading');
+        window.setTimeout(function () {
+          previewImage.src = src;
+          previewImage.alt = alt || '';
+          previewImage.classList.remove('is-fading');
+        }, 200);
+      }
+
+      items.forEach(function (item) {
+        var trigger = item.querySelector('.waccordion-trigger');
+        var content = item.querySelector('.waccordion-content');
+
+        // Initialize open/closed state from the trigger's starting aria-expanded value.
+        if (trigger.getAttribute('aria-expanded') === 'true') {
+          content.style.height = 'auto';
+        }
+
+        trigger.addEventListener('click', function () {
+          var isOpen = trigger.getAttribute('aria-expanded') === 'true';
+
+          swapPreviewImage(trigger.getAttribute('data-image'), trigger.getAttribute('data-alt'));
+
+          items.forEach(function (other) {
+            other.classList.toggle('is-active', other === item);
+          });
+
+          if (isOpen) {
+            close(trigger, content);
+            return;
+          }
+
+          // Single-open behavior: close any other open item first.
+          items.forEach(function (other) {
+            if (other === item) return;
+            var otherTrigger = other.querySelector('.waccordion-trigger');
+            var otherContent = other.querySelector('.waccordion-content');
+            if (otherTrigger.getAttribute('aria-expanded') === 'true') {
+              close(otherTrigger, otherContent);
+            }
+          });
+
+          open(trigger, content);
+        });
+      });
+    })();
+  </script>
+
+  <script>
+    (function () {
+      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      document.querySelectorAll('.thumb-carousel').forEach(function (root) {
+        var cardsPerView = parseInt(root.getAttribute('data-cards-per-view'), 10) || 3;
+        var track = root.querySelector('.thumb-carousel-track');
+        var prevBtn = root.querySelector('.thumb-carousel-prev');
+        var nextBtn = root.querySelector('.thumb-carousel-next');
+        if (!track) return;
+
+        // Read the source cards out of the DOM once, then rebuild the
+        // track from this data array on every slide (mirrors the React
+        // reference's re-render-on-state-change approach).
+        var data = Array.prototype.map.call(track.children, function (el) {
+          return { img: el.getAttribute('data-img'), caption: el.getAttribute('data-caption') };
+        });
+        if (data.length <= 1) return;
+
+        var visibleCount = Math.min(cardsPerView, data.length);
+        var loopable = data.length > visibleCount;
+        var slotCount = loopable ? visibleCount + 1 : visibleCount;
+        var cardWidthPct = 100 / slotCount;
+        var currentIndex = 0;
+        var isAnimating = false;
+
+        track.style.width = loopable ? (slotCount * 100 / visibleCount) + '%' : '100%';
+
+        function buildCard(item) {
+          var card = document.createElement('div');
+          card.className = 'thumb-card';
+          card.style.width = cardWidthPct + '%';
+
+          var inner = document.createElement('div');
+          inner.className = 'thumb-card-inner';
+          inner.tabIndex = 0;
+
+          var img = document.createElement('img');
+          img.src = item.img;
+          img.alt = '';
+          img.loading = 'lazy';
+
+          var caption = document.createElement('div');
+          caption.className = 'thumb-card-caption';
+          var p = document.createElement('p');
+          p.textContent = item.caption;
+          caption.appendChild(p);
+
+          inner.appendChild(img);
+          inner.appendChild(caption);
+          card.appendChild(inner);
+          return card;
+        }
+
+        function render() {
+          track.innerHTML = '';
+          var count = loopable ? visibleCount + 1 : visibleCount;
+          for (var i = 0; i < count; i++) {
+            var idx = (currentIndex + i) % data.length;
+            track.appendChild(buildCard(data[idx]));
+          }
+        }
+
+        function updateButtons() {
+          // Nothing to page through once every card already fits in view —
+          // hide the arrows entirely rather than leaving them inert.
+          if (!loopable) {
+            if (prevBtn) prevBtn.hidden = true;
+            if (nextBtn) nextBtn.hidden = true;
+          }
+        }
+
+        function nextSlide() {
+          if (isAnimating || !loopable) return;
+          isAnimating = true;
+          var nextIndex = (currentIndex + 1) % data.length;
+
+          if (reduceMotion) {
+            currentIndex = nextIndex;
+            render();
+            isAnimating = false;
+            return;
+          }
+
+          track.style.transition = 'transform 500ms cubic-bezier(0.22, 1, 0.36, 1)';
+          track.style.transform = 'translateX(-' + cardWidthPct + '%)';
+
+          window.setTimeout(function () {
+            currentIndex = nextIndex;
+            render();
+            track.style.transition = 'none';
+            track.style.transform = 'translateX(0)';
+            void track.offsetWidth;
+            isAnimating = false;
+          }, 500);
+        }
+
+        function prevSlide() {
+          if (isAnimating || !loopable) return;
+          isAnimating = true;
+          var prevIndex = (currentIndex - 1 + data.length) % data.length;
+
+          if (reduceMotion) {
+            currentIndex = prevIndex;
+            render();
+            isAnimating = false;
+            return;
+          }
+
+          currentIndex = prevIndex;
+          track.style.transition = 'none';
+          render();
+          track.style.transform = 'translateX(-' + cardWidthPct + '%)';
+          void track.offsetWidth;
+
+          track.style.transition = 'transform 500ms cubic-bezier(0.22, 1, 0.36, 1)';
+          track.style.transform = 'translateX(0)';
+
+          window.setTimeout(function () {
+            isAnimating = false;
+          }, 500);
+        }
+
+        if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+        if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+
+        render();
+        updateButtons();
+      });
+    })();
+  </script>
+
+  <script>
+    (function () {
+      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduceMotion) return;
+
+      var list = document.querySelector('.experience-list');
+      if (!list) return;
+
+      var items = Array.prototype.filter.call(list.children, function (el) {
+        return el.classList.contains('experience-item') || el.classList.contains('experience-group');
+      });
+      if (!items.length) return;
+
+      items.forEach(function (el) {
+        el.classList.add('experience-reveal');
+      });
+
+      // Each block is watched independently, so it fades/slides in the
+      // moment it individually scrolls into view — not all at once when
+      // the list's top edge is first reached.
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        });
+      }, { threshold: 0.2, rootMargin: '0px 0px -15% 0px' });
+
+      items.forEach(function (el) { observer.observe(el); });
+    })();
+  </script>
+  <script>
+    (function () {
+      // Split each nav link's text into per-character spans so hover can
+      // flip each letter up (like a rolodex), staggered left to right.
+      document.querySelectorAll('.floating-menu-link').forEach(function (link) {
+        var text = link.textContent;
+        link.setAttribute('aria-label', text);
+        link.textContent = '';
+        text.split('').forEach(function (ch, i) {
+          var outer = document.createElement('span');
+          outer.className = 'fm-char';
+          var inner = document.createElement('span');
+          inner.className = 'fm-char-inner';
+          inner.style.transitionDelay = (30 * i) + 'ms';
+          var line1 = document.createElement('span');
+          line1.className = 'fm-char-line';
+          line1.textContent = ch === ' ' ? ' ' : ch;
+          var line2 = line1.cloneNode(true);
+          line2.setAttribute('aria-hidden', 'true');
+          inner.appendChild(line1);
+          inner.appendChild(line2);
+          outer.appendChild(inner);
+          link.appendChild(outer);
+        });
+      });
+    })();
+  </script>
+
+  <script>
+    (function () {
+      var menu = document.getElementById('floatingMenu');
+      var toggle = document.getElementById('floatingMenuToggle');
+      var links = document.querySelectorAll('.floating-menu-link');
+      if (!menu || !toggle) return;
+
+      function setOpen(open) {
+        menu.classList.toggle('is-open', open);
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        links.forEach(function (l) { l.tabIndex = open ? 0 : -1; });
+      }
+
+      toggle.addEventListener('click', function (e) {
+        e.stopPropagation();
+        setOpen(!menu.classList.contains('is-open'));
+      });
+
+      // Clicking anywhere else on the pill opens it (mirrors the source component).
+      menu.addEventListener('click', function () {
+        if (!menu.classList.contains('is-open')) setOpen(true);
+      });
+
+      document.addEventListener('click', function (e) {
+        if (menu.classList.contains('is-open') && !menu.contains(e.target)) {
+          setOpen(false);
+        }
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && menu.classList.contains('is-open')) {
+          setOpen(false);
+          toggle.focus();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Preview: JD Logo Scripts 2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Schibsted+Grotesk:wght@700;800&family=Pacifico&family=Kaushan+Script&family=Sacramento&family=Lobster&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --cream:  #FEF5EA;
+    --orange: #056571;
+    --pink:   #FF6A5C;
+    --ink:    #0A0A0A;
+    --paper:  #FFFFFF;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    font-family: 'Inter', sans-serif;
+    color: var(--ink);
+    padding: 48px 24px;
+  }
+  h1 {
+    text-align: center;
+    font-family: 'Schibsted Grotesk', sans-serif;
+    font-weight: 800;
+    font-size: 2rem;
+    letter-spacing: -0.02em;
+    margin: 0 0 8px;
+  }
+  .sub {
+    text-align: center;
+    color: rgba(10,10,10,0.6);
+    margin: 0 0 48px;
+    font-size: 1rem;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 28px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .concept {
+    background: var(--cream);
+    border-radius: 20px;
+    padding: 40px 24px 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+  .mark-frame {
+    width: 220px;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .concept h2 {
+    font-family: 'Schibsted Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+  .concept p {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: rgba(10,10,10,0.7);
+    text-align: center;
+  }
+
+  .blend-mark {
+    position: relative;
+    width: 190px;
+    height: 160px;
+  }
+  .blend-mark span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    line-height: 1;
+  }
+  .blend-mark .j {
+    color: var(--pink);
+    mix-blend-mode: multiply;
+  }
+  .blend-mark .d {
+    color: var(--orange);
+    mix-blend-mode: multiply;
+  }
+
+  /* Per-font tuning */
+  .f-pacifico .j, .f-pacifico .d { font-family: 'Pacifico', cursive; font-weight: 400; font-size: 6.4rem; }
+  .f-pacifico .j { transform: translate(-72%, -56%); }
+  .f-pacifico .d { transform: translate(-26%, -52%); }
+
+  .f-kaushan .j, .f-kaushan .d { font-family: 'Kaushan Script', cursive; font-weight: 400; font-size: 6.6rem; }
+  .f-kaushan .j { transform: translate(-74%, -56%); }
+  .f-kaushan .d { transform: translate(-26%, -52%); }
+
+  .f-sacramento .j, .f-sacramento .d { font-family: 'Sacramento', cursive; font-weight: 400; font-size: 8.5rem; }
+  .f-sacramento .j { transform: translate(-70%, -60%); }
+  .f-sacramento .d { transform: translate(-30%, -50%); }
+
+  .f-lobster .j, .f-lobster .d { font-family: 'Lobster', cursive; font-weight: 400; font-size: 6rem; }
+  .f-lobster .j { transform: translate(-76%, -54%); }
+  .f-lobster .d { transform: translate(-24%, -52%); }
+</style>
+</head>
+<body>
+  <h1>JD Logo — More Brush Scripts</h1>
+  <p class="sub">Same family as Yellowtail: retro, confident, single-weight brush scripts.</p>
+  <div class="grid">
+
+    <div class="concept">
+      <div class="mark-frame">
+        <div class="blend-mark f-pacifico">
+          <span class="j">J</span><span class="d">D</span>
+        </div>
+      </div>
+      <h2>Pacifico</h2>
+      <p>Rounded, bubbly, iconic retro-surf-shop brush script. Friendlier and softer-edged than Yellowtail.</p>
+    </div>
+
+    <div class="concept">
+      <div class="mark-frame">
+        <div class="blend-mark f-kaushan">
+          <span class="j">J</span><span class="d">D</span>
+        </div>
+      </div>
+      <h2>Kaushan Script</h2>
+      <p>Bolder and more dynamic stroke-width variation than Yellowtail — closest sibling in the group, with a bit more flair.</p>
+    </div>
+
+    <div class="concept">
+      <div class="mark-frame">
+        <div class="blend-mark f-sacramento">
+          <span class="j">J</span><span class="d">D</span>
+        </div>
+      </div>
+      <h2>Sacramento</h2>
+      <p>Thinner, monoline retro script — same mid-century signage era as Yellowtail, but lighter and more delicate.</p>
+    </div>
+
+    <div class="concept">
+      <div class="mark-frame">
+        <div class="blend-mark f-lobster">
+          <span class="j">J</span><span class="d">D</span>
+        </div>
+      </div>
+      <h2>Lobster</h2>
+      <p>Bolder, more geometric brush script — very recognizable, a bit heavier and more contemporary than Yellowtail.</p>
+    </div>
+
+  </div>
+</body>
+</html>

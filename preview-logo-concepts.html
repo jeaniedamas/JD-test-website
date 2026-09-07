@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Preview: JD Logo Concepts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Schibsted+Grotesk:wght@700;800&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --cream:  #FEF5EA;
+    --orange: #056571;
+    --gray:   #CCDFCB;
+    --pink:   #FF6A5C;
+    --amber:  #FFB567;
+    --ink:    #0A0A0A;
+    --paper:  #FFFFFF;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    font-family: 'Inter', sans-serif;
+    color: var(--ink);
+    padding: 48px 24px;
+  }
+  h1 {
+    text-align: center;
+    font-family: 'Schibsted Grotesk', sans-serif;
+    font-weight: 800;
+    font-size: 2rem;
+    letter-spacing: -0.02em;
+    margin: 0 0 8px;
+  }
+  .sub {
+    text-align: center;
+    color: rgba(10,10,10,0.6);
+    margin: 0 0 48px;
+    font-size: 1rem;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 28px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .concept {
+    background: var(--cream);
+    border-radius: 20px;
+    padding: 40px 24px 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+  .mark-frame {
+    width: 180px;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .concept h2 {
+    font-family: 'Schibsted Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+  .concept p {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: rgba(10,10,10,0.7);
+    text-align: center;
+  }
+
+  /* --- Concept 1: Blend (overlapping type, multiply) --- */
+  .blend-mark {
+    position: relative;
+    width: 140px;
+    height: 140px;
+  }
+  .blend-mark span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-family: 'Schibsted Grotesk', sans-serif;
+    font-weight: 800;
+    font-size: 6.5rem;
+    line-height: 1;
+  }
+  .blend-mark .j {
+    color: var(--pink);
+    transform: translate(-68%, -54%);
+    mix-blend-mode: multiply;
+  }
+  .blend-mark .d {
+    color: var(--orange);
+    transform: translate(-32%, -54%);
+    mix-blend-mode: multiply;
+  }
+
+  /* --- Concept 2: Seal (ring + tight lockup) --- */
+  .seal-mark {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    border: 3px solid var(--ink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .seal-mark span {
+    font-family: 'Schibsted Grotesk', sans-serif;
+    font-weight: 800;
+    font-size: 3.6rem;
+    letter-spacing: -0.12em;
+    transform: translateX(-2px);
+  }
+
+  /* --- Concept 3: Ligature (custom geometric path) --- */
+  .ligature-mark svg { width: 150px; height: 150px; }
+
+  /* --- Concept 4: Stacked frame (bold D frame, nested J) --- */
+  .frame-mark {
+    position: relative;
+    width: 170px;
+    height: 170px;
+    border-radius: 28px;
+    background: var(--orange);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .frame-mark span {
+    font-family: 'Schibsted Grotesk', sans-serif;
+    font-weight: 800;
+    color: var(--paper);
+  }
+  .frame-mark .d {
+    font-size: 6rem;
+    opacity: 0.28;
+  }
+  .frame-mark .j {
+    position: absolute;
+    font-size: 4.4rem;
+    top: 50%;
+    left: 46%;
+    transform: translate(-50%, -46%);
+  }
+</style>
+</head>
+<body>
+  <h1>JD Monogram Concepts</h1>
+  <p class="sub">Four directions for blending the initials — pick one to refine, or mix elements across them.</p>
+  <div class="grid">
+
+    <div class="concept">
+      <div class="mark-frame">
+        <div class="blend-mark">
+          <span class="j j-letter">J</span>
+          <span class="d d-letter">D</span>
+        </div>
+      </div>
+      <h2>1. Blend</h2>
+      <p>J and D overlap directly in your two brand colors, multiplied together so the overlap reads as a third, richer tone.</p>
+    </div>
+
+    <div class="concept">
+      <div class="mark-frame">
+        <div class="seal-mark"><span>JD</span></div>
+      </div>
+      <h2>2. Seal</h2>
+      <p>A tightly kerned "JD" lockup inside a thin ring — editorial, badge-like, a quiet nod to a journalism background.</p>
+    </div>
+
+    <div class="concept">
+      <div class="mark-frame ligature-mark">
+        <svg viewBox="0 0 100 100" fill="none">
+          <path d="M50 8 L50 70 M50 8 Q88 8 88 39 Q88 70 50 70" stroke="#0A0A0A" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M50 70 L50 86 Q50 96 36 96 Q26 96 22 90" stroke="#0A0A0A" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h2>3. Ligature</h2>
+      <p>A single abstract glyph: shared stem, D's bowl on top, J's hook continuing below — works small, good favicon candidate.</p>
+    </div>
+
+    <div class="concept">
+      <div class="mark-frame">
+        <div class="frame-mark">
+          <span class="d">D</span>
+          <span class="j">J</span>
+        </div>
+      </div>
+      <h2>4. Framed</h2>
+      <p>A bold, faint "D" fills a rounded badge as a backdrop; a solid "J" sits forward on top — depth through layering, not color.</p>
+    </div>
+
+  </div>
+</body>
+</html>

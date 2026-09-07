@@ -1,0 +1,743 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Services — Jean Damas</title>
+<meta name="description" content="Open to fractional, contract, and full-time roles — let's talk about what makes sense for your team." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Karla:wght@400;500;600;700&family=Pacifico&family=Schibsted+Grotesk:wght@700;800&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    --cream:  #FEF5EA;
+    --coral:  #FF6A5C;
+    --ink:    #0A0A0A;
+    --paper:  #FFFFFF;
+
+    --radius: 20px;
+    --gap: 24px;
+    --pad: clamp(20px, 3.1vw, 56px);
+  }
+
+  * { box-sizing: border-box; -webkit-font-smoothing: inherit; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--paper);
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  @supports (corner-shape: superellipse(2)) {
+    .card { corner-shape: superellipse(2); }
+  }
+
+  a { color: inherit; }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    max-width: 1760px;
+    margin: 0 auto;
+    padding: var(--gap) var(--gap) 0;
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-decoration: none;
+    color: rgba(10, 10, 10, 0.7);
+    transition: color 0.25s ease, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .back-link:hover,
+  .back-link:focus-visible {
+    color: var(--ink);
+    transform: translateX(-3px);
+  }
+  .back-link:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 4px;
+    border-radius: 4px;
+  }
+
+  .page {
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: var(--gap);
+  }
+
+  .services-stack {
+    width: 100%;
+    max-width: 1760px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap);
+  }
+
+  .card {
+    position: relative;
+    border-radius: var(--radius);
+    overflow: hidden;
+    padding: var(--pad);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  }
+
+  /* --- Intro: headline + subcopy --- */
+  .services-intro {
+    background: var(--coral);
+  }
+  .services-intro h1 {
+    margin: 0;
+    font-family: 'Pacifico', cursive;
+    font-weight: 400;
+    font-size: clamp(2.5rem, 4.75vw, 5.5rem);
+    line-height: 1;
+    letter-spacing: normal;
+  }
+  .services-intro p {
+    margin: 20px 0 0;
+    max-width: none;
+    font-family: 'Karla', sans-serif;
+    font-weight: 400;
+    font-size: clamp(1rem, 1.5vw, 1.25rem);
+    line-height: 1.6;
+    color: rgba(10, 10, 10, 0.82);
+  }
+
+  /* --- Carousel card --- */
+  .services-carousel-card {
+    background: var(--cream);
+    padding-left: clamp(20px, 4vw, 56px);
+    padding-right: clamp(20px, 4vw, 56px);
+  }
+  .carousel-wrapper {
+    position: relative;
+  }
+  .carousel-track {
+    display: flex;
+    gap: var(--gap);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    padding-bottom: 8px;
+    margin: 0 -4px;
+    padding-left: 4px;
+    padding-right: 4px;
+    /* Hide scrollbar visually; native swipe/drag still works */
+    scrollbar-width: none;
+  }
+  .carousel-track::-webkit-scrollbar {
+    display: none;
+  }
+  .service-card {
+    scroll-snap-align: start;
+    flex: 0 0 clamp(260px, 32vw, 340px);
+    height: 440px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 22px;
+    padding: 32px;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .service-card.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .service-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(255, 255, 255, 0.45), transparent 55%);
+    pointer-events: none;
+  }
+  .service-card > * {
+    position: relative;
+    z-index: 1;
+  }
+  .service-card--mint   { background: linear-gradient(135deg, #E9F2E8, #CCDFCB); }
+  .service-card--coral  { background: linear-gradient(135deg, #FFE6DF, #FFB8A8); }
+  .service-card--teal   { background: linear-gradient(135deg, #DDEDE9, #A9D0C7); }
+  .service-card--amber  { background: linear-gradient(135deg, #FFF2DD, #FFD9A0); }
+  .service-card--sky    { background: linear-gradient(135deg, #EAEEF9, #C7D3F0); }
+  .service-card--rose   { background: linear-gradient(135deg, #F8E7EB, #EFC3CF); }
+
+  .service-card-top {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 28px;
+  }
+  .service-card-number {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.85rem;
+    color: rgba(10, 10, 10, 0.5);
+  }
+  .service-card-icon {
+    width: 44px;
+    height: 44px;
+    color: var(--ink);
+  }
+  .service-card-icon svg {
+    width: 100%;
+    height: 100%;
+  }
+  .service-card-bottom h3 {
+    margin: 0 0 8px;
+    font-family: 'Schibsted Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+  .service-card-bottom p {
+    margin: 0;
+    font-family: 'Karla', sans-serif;
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: rgba(10, 10, 10, 0.72);
+  }
+
+  .carousel-btn {
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--paper);
+    border: none;
+    color: var(--ink);
+    cursor: pointer;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08), 0 8px 20px -8px rgba(10, 10, 10, 0.35);
+    transition: background-color 0.25s ease, box-shadow 0.25s ease,
+                transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .carousel-btn:hover,
+  .carousel-btn:focus-visible {
+    background: var(--ink);
+    color: var(--paper);
+    box-shadow: 0 4px 8px -2px rgba(0, 0, 0, 0.15), 0 14px 26px -10px rgba(10, 10, 10, 0.4);
+  }
+  .carousel-next:hover,
+  .carousel-next:focus-visible {
+    transform: translateY(-50%) translateX(3px);
+  }
+  .carousel-prev:hover,
+  .carousel-prev:focus-visible {
+    transform: translateY(-50%) translateX(-3px);
+  }
+  .carousel-btn:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 3px;
+  }
+  .carousel-btn svg {
+    width: 18px;
+    height: 18px;
+  }
+  .carousel-prev { left: 8px; }
+  .carousel-next { right: 8px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .service-card, .carousel-btn, .carousel-track { transition: none; scroll-behavior: auto; }
+  }
+
+  /* --- Responsive --- */
+  @media (max-width: 860px) {
+    :root { --gap: 14px; --radius: 16px; }
+    .page { padding: 14px; }
+    .back-link { padding: 14px 14px 0; }
+    .service-card { flex-basis: 78vw; height: 400px; }
+    .carousel-prev { left: 0; }
+    .carousel-next { right: 0; }
+    .floating-menu { top: 14px; right: 14px; }
+  }
+
+  /* --- Floating morph menu --- */
+  .floating-menu {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 200;
+    width: 150px;
+    height: 48px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 72px;
+    background: rgba(255, 181, 103, 0.8);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(219, 151, 72, 0.7);
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 1px 2px rgba(10, 10, 10, 0.08), 0 10px 24px -12px rgba(10, 10, 10, 0.3);
+    transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                height 0.15s cubic-bezier(0.22, 1, 0.36, 1),
+                border-radius 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.3s ease,
+                transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .floating-menu:hover {
+    transform: scale(1.05);
+  }
+  .floating-menu.is-open {
+    width: 280px;
+    height: 260px;
+    border-radius: 32px;
+    border: none;
+    cursor: default;
+    transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                height 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                border-radius 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                border-color 0.3s ease,
+                box-shadow 0.3s ease;
+  }
+  .floating-menu.is-open:hover {
+    transform: none;
+  }
+
+  .floating-menu-circle {
+    position: absolute;
+    left: 50%;
+    bottom: -200%;
+    width: 200%;
+    height: 200%;
+    border-radius: 50%;
+    background: rgba(5, 101, 113, 0.82);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    transform: translateX(-50%);
+    transition: bottom 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .floating-menu.is-open .floating-menu-circle {
+    bottom: -20%;
+    transition-delay: 0.1s;
+  }
+
+  .floating-menu-links {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    flex: 0;
+    min-height: 0;
+    overflow: hidden;
+    padding: 0 20px;
+  }
+  .floating-menu.is-open .floating-menu-links {
+    flex: 1;
+  }
+
+  .floating-menu-link {
+    position: relative;
+    display: flex;
+    color: var(--cream);
+    font-family: 'Schibsted Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    text-decoration: none;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+  }
+  .floating-menu.is-open .floating-menu-link {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .floating-menu.is-open .floating-menu-link:nth-child(1) { transition-delay: 0.4s; }
+  .floating-menu.is-open .floating-menu-link:nth-child(2) { transition-delay: 0.48s; }
+  .floating-menu.is-open .floating-menu-link:nth-child(3) { transition-delay: 0.56s; }
+  .floating-menu.is-open .floating-menu-link:nth-child(4) { transition-delay: 0.64s; }
+  .floating-menu-link:focus-visible {
+    outline: 2px solid var(--cream);
+    outline-offset: 4px;
+    border-radius: 2px;
+  }
+
+  /* Per-character hover flip, built by JS into nested spans */
+  .fm-char {
+    display: inline-block;
+    overflow: hidden;
+    height: 1em;
+  }
+  .fm-char-inner {
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .floating-menu-link:hover .fm-char-inner {
+    transform: translateY(-50%);
+  }
+  .fm-char-line {
+    display: block;
+    height: 1em;
+    line-height: 1em;
+  }
+
+  .floating-menu-bar {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 48px;
+    flex-shrink: 0;
+    padding: 0 20px;
+    background: none;
+    border: none;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    transition: padding-bottom 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .floating-menu.is-open .floating-menu-bar {
+    padding-bottom: 20px;
+  }
+  .floating-menu-label {
+    font-family: 'Pacifico', cursive;
+    font-size: 1.35rem;
+    font-weight: 400;
+    color: var(--ink);
+    transition: color 0.3s ease;
+  }
+  .floating-menu.is-open .floating-menu-label {
+    color: var(--cream);
+  }
+
+  .floating-menu-burger {
+    position: relative;
+    width: 18px;
+    height: 14px;
+    flex-shrink: 0;
+  }
+  .floating-menu-burger span {
+    position: absolute;
+    left: 0;
+    width: 18px;
+    height: 2px;
+    border-radius: 999px;
+    background: var(--ink);
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+                top 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+                background-color 0.3s ease;
+  }
+  .floating-menu-burger span:nth-child(1) { top: 3px; }
+  .floating-menu-burger span:nth-child(2) { top: 9px; }
+  .floating-menu.is-open .floating-menu-burger span {
+    background: var(--cream);
+  }
+  .floating-menu.is-open .floating-menu-burger span:nth-child(1) {
+    top: 6px;
+    transform: rotate(45deg);
+  }
+  .floating-menu.is-open .floating-menu-burger span:nth-child(2) {
+    top: 6px;
+    transform: rotate(-45deg);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .floating-menu,
+    .floating-menu.is-open,
+    .floating-menu-circle,
+    .floating-menu-link,
+    .floating-menu-bar,
+    .floating-menu-burger span,
+    .fm-char-inner {
+      transition: none;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="floating-menu" id="floatingMenu">
+    <span class="floating-menu-circle" aria-hidden="true"></span>
+    <nav class="floating-menu-links" id="floatingMenuLinks" aria-label="Site">
+      <a class="floating-menu-link" href="about.html" tabindex="-1">About</a>
+      <a class="floating-menu-link" href="portfolio.html" tabindex="-1">Portfolio</a>
+      <a class="floating-menu-link" href="services.html" tabindex="-1" aria-current="page">Services</a>
+      <a class="floating-menu-link" href="lets-talk.html" tabindex="-1">Let's Talk</a>
+    </nav>
+    <button class="floating-menu-bar" id="floatingMenuToggle" type="button" aria-expanded="false" aria-controls="floatingMenuLinks">
+      <span class="floating-menu-label">Menu</span>
+      <span class="floating-menu-burger" aria-hidden="true"><span></span><span></span></span>
+    </button>
+  </div>
+
+  <a class="back-link" href="index.html">&larr; Back to home</a>
+  <main class="page">
+    <div class="services-stack">
+
+      <section class="card services-intro">
+        <h1>Services</h1>
+        <p>Open to fractional, contract, and full-time roles — let's talk about what makes sense for your team.</p>
+      </section>
+
+      <section class="card services-carousel-card">
+        <div class="carousel-wrapper">
+          <button class="carousel-btn carousel-prev" type="button" aria-label="Previous service">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+          </button>
+          <div class="carousel-track">
+
+            <div class="service-card service-card--teal">
+              <div class="service-card-top">
+                <span class="service-card-number">( 001 )</span>
+                <span class="service-card-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/>
+                    <path d="M9 12l2 2 4-4"/>
+                  </svg>
+                </span>
+              </div>
+              <div class="service-card-bottom">
+                <h3>Editorial Governance</h3>
+                <p>Establishes the standards, review processes, and style guardrails that keep a growing content operation consistent and on-brand.</p>
+              </div>
+            </div>
+
+            <div class="service-card service-card--mint">
+              <div class="service-card-top">
+                <span class="service-card-number">( 002 )</span>
+                <span class="service-card-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="6" r="3"/>
+                    <circle cx="5" cy="18" r="3"/>
+                    <circle cx="19" cy="18" r="3"/>
+                    <path d="M12 9v3M12 12l-5.5 4M12 12l5.5 4"/>
+                  </svg>
+                </span>
+              </div>
+              <div class="service-card-bottom">
+                <h3>Contributor Network Management</h3>
+                <p>Builds and leads freelance networks of writers, editors, and subject-matter reviewers to scale editorial output while protecting quality and voice.</p>
+              </div>
+            </div>
+
+            <div class="service-card service-card--sky">
+              <div class="service-card-top">
+                <span class="service-card-number">( 003 )</span>
+                <span class="service-card-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="7"/>
+                    <path d="M21 21l-4.3-4.3"/>
+                  </svg>
+                </span>
+              </div>
+              <div class="service-card-bottom">
+                <h3>SEO &amp; AI Search Strategy</h3>
+                <p>Positions content to perform in traditional and AI-driven search (SEO/AEO/GEO), pairing editorial judgment with technical fundamentals.</p>
+              </div>
+            </div>
+
+            <div class="service-card service-card--coral">
+              <div class="service-card-top">
+                <span class="service-card-number">( 004 )</span>
+                <span class="service-card-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 3v3M12 18v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M3 12h3M18 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/>
+                    <circle cx="12" cy="12" r="3.5"/>
+                  </svg>
+                </span>
+              </div>
+              <div class="service-card-bottom">
+                <h3>AI-Powered Editorial Workflows</h3>
+                <p>Integrates AI tools into brief generation, content refreshes, and asset repurposing to increase velocity without sacrificing standards (AirOps Certified Content Engineer).</p>
+              </div>
+            </div>
+
+            <div class="service-card service-card--amber">
+              <div class="service-card-top">
+                <span class="service-card-number">( 005 )</span>
+                <span class="service-card-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="3" width="18" height="18" rx="3"/>
+                    <path d="M3 10h18M9 10v11"/>
+                  </svg>
+                </span>
+              </div>
+              <div class="service-card-bottom">
+                <h3>Content Hub Design &amp; UX</h3>
+                <p>Leads net-new and redesigned editorial hub projects, partnering closely with creative and web teams on UX strategy, layout, and execution.</p>
+              </div>
+            </div>
+
+            <div class="service-card service-card--rose">
+              <div class="service-card-top">
+                <span class="service-card-number">( 006 )</span>
+                <span class="service-card-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="9"/>
+                    <path d="M15.5 8.5l-2 5-5 2 2-5 5-2z"/>
+                  </svg>
+                </span>
+              </div>
+              <div class="service-card-bottom">
+                <h3>Editorial Leadership</h3>
+                <p>Leadership for teams that need senior content strategy, covering planning and cross-functional alignment with teams such as PMM, demand gen, and sales.</p>
+              </div>
+            </div>
+
+          </div>
+
+          <button class="carousel-btn carousel-next" type="button" aria-label="Next service">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <script>
+    (function () {
+      var track = document.querySelector('.carousel-track');
+      var nextBtn = document.querySelector('.carousel-next');
+      var prevBtn = document.querySelector('.carousel-prev');
+      var cards = Array.prototype.slice.call(document.querySelectorAll('.service-card'));
+      if (!track || !nextBtn || !cards.length) return;
+
+      function step() {
+        var card = cards[0];
+        var style = getComputedStyle(track);
+        var gap = parseFloat(style.columnGap || style.gap || '0');
+        return card.getBoundingClientRect().width + gap;
+      }
+
+      // --- Next button: scroll one card at a time, looping back to the start ---
+      nextBtn.addEventListener('click', function () {
+        var maxScroll = track.scrollWidth - track.clientWidth;
+
+        if (track.scrollLeft >= maxScroll - 4) {
+          track.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          track.scrollBy({ left: step(), behavior: 'smooth' });
+        }
+      });
+
+      // --- Prev button: scroll one card back, looping to the end ---
+      if (prevBtn) {
+        prevBtn.addEventListener('click', function () {
+          var maxScroll = track.scrollWidth - track.clientWidth;
+
+          if (track.scrollLeft <= 4) {
+            track.scrollTo({ left: maxScroll, behavior: 'smooth' });
+          } else {
+            track.scrollBy({ left: -step(), behavior: 'smooth' });
+          }
+        });
+      }
+
+      // --- Staggered reveal as the carousel scrolls into view ---
+      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduceMotion) {
+        cards.forEach(function (el) { el.classList.add('is-visible'); });
+        return;
+      }
+
+      var STAGGER_MS = 100;
+      cards.forEach(function (el, i) {
+        el.style.transitionDelay = (i * STAGGER_MS) + 'ms';
+      });
+
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          cards.forEach(function (el) { el.classList.add('is-visible'); });
+          observer.disconnect();
+        });
+      }, { threshold: 0.2 });
+
+      observer.observe(track);
+    })();
+  </script>
+  <script>
+    (function () {
+      // Split each nav link's text into per-character spans so hover can
+      // flip each letter up (like a rolodex), staggered left to right.
+      document.querySelectorAll('.floating-menu-link').forEach(function (link) {
+        var text = link.textContent;
+        link.setAttribute('aria-label', text);
+        link.textContent = '';
+        text.split('').forEach(function (ch, i) {
+          var outer = document.createElement('span');
+          outer.className = 'fm-char';
+          var inner = document.createElement('span');
+          inner.className = 'fm-char-inner';
+          inner.style.transitionDelay = (30 * i) + 'ms';
+          var line1 = document.createElement('span');
+          line1.className = 'fm-char-line';
+          line1.textContent = ch === ' ' ? ' ' : ch;
+          var line2 = line1.cloneNode(true);
+          line2.setAttribute('aria-hidden', 'true');
+          inner.appendChild(line1);
+          inner.appendChild(line2);
+          outer.appendChild(inner);
+          link.appendChild(outer);
+        });
+      });
+    })();
+  </script>
+
+  <script>
+    (function () {
+      var menu = document.getElementById('floatingMenu');
+      var toggle = document.getElementById('floatingMenuToggle');
+      var links = document.querySelectorAll('.floating-menu-link');
+      if (!menu || !toggle) return;
+
+      function setOpen(open) {
+        menu.classList.toggle('is-open', open);
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        links.forEach(function (l) { l.tabIndex = open ? 0 : -1; });
+      }
+
+      toggle.addEventListener('click', function (e) {
+        e.stopPropagation();
+        setOpen(!menu.classList.contains('is-open'));
+      });
+
+      // Clicking anywhere else on the pill opens it (mirrors the source component).
+      menu.addEventListener('click', function () {
+        if (!menu.classList.contains('is-open')) setOpen(true);
+      });
+
+      document.addEventListener('click', function (e) {
+        if (menu.classList.contains('is-open') && !menu.contains(e.target)) {
+          setOpen(false);
+        }
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && menu.classList.contains('is-open')) {
+          setOpen(false);
+          toggle.focus();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

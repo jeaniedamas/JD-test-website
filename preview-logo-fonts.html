@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Preview: JD Logo Fonts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Schibsted+Grotesk:wght@700;800&family=Playfair+Display:wght@800;900&family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Bebas+Neue&family=Instrument+Serif&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --cream:  #FEF5EA;
+    --orange: #056571;
+    --pink:   #FF6A5C;
+    --ink:    #0A0A0A;
+    --paper:  #FFFFFF;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    font-family: 'Inter', sans-serif;
+    color: var(--ink);
+    padding: 48px 24px;
+  }
+  h1 {
+    text-align: center;
+    font-family: 'Schibsted Grotesk', sans-serif;
+    font-weight: 800;
+    font-size: 2rem;
+    letter-spacing: -0.02em;
+    margin: 0 0 8px;
+  }
+  .sub {
+    text-align: center;
+    color: rgba(10,10,10,0.6);
+    margin: 0 0 48px;
+    font-size: 1rem;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 28px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .concept {
+    background: var(--cream);
+    border-radius: 20px;
+    padding: 40px 24px 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+  .mark-frame {
+    width: 200px;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .concept h2 {
+    font-family: 'Schibsted Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+  .concept p {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: rgba(10,10,10,0.7);
+    text-align: center;
+  }
+
+  .blend-mark {
+    position: relative;
+    width: 170px;
+    height: 150px;
+  }
+  .blend-mark span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    line-height: 1;
+  }
+  .blend-mark .j {
+    color: var(--pink);
+    mix-blend-mode: multiply;
+  }
+  .blend-mark .d {
+    color: var(--orange);
+    mix-blend-mode: multiply;
+  }
+
+  /* Per-font tuning: weight, size, and overlap offsets vary a lot by typeface */
+  .f-playfair .j, .f-playfair .d { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 6rem; }
+  .f-playfair .j { transform: translate(-70%, -55%); }
+  .f-playfair .d { transform: translate(-28%, -55%); }
+
+  .f-fraunces .j, .f-fraunces .d { font-family: 'Fraunces', serif; font-weight: 700; font-optical-sizing: auto; font-size: 6.2rem; }
+  .f-fraunces .j { transform: translate(-72%, -56%); }
+  .f-fraunces .d { transform: translate(-28%, -56%); }
+
+  .f-bebas .j, .f-bebas .d { font-family: 'Bebas Neue', sans-serif; font-weight: 400; font-size: 7rem; }
+  .f-bebas .j { transform: translate(-78%, -52%); }
+  .f-bebas .d { transform: translate(-22%, -52%); }
+
+  .f-instrument .j, .f-instrument .d { font-family: 'Instrument Serif', serif; font-weight: 400; font-size: 7.5rem; }
+  .f-instrument .j { transform: translate(-72%, -55%); }
+  .f-instrument .d { transform: translate(-26%, -55%); }
+</style>
+</head>
+<body>
+  <h1>JD Logo — Font Options</h1>
+  <p class="sub">Same "Blend" overlap concept, four different typefaces — all contrast against the page's Schibsted Grotesk / Inter sans pairing.</p>
+  <div class="grid">
+
+    <div class="concept">
+      <div class="mark-frame">
+        <div class="blend-mark f-playfair">
+          <span class="j">J</span><span class="d">D</span>
+        </div>
+      </div>
+      <h2>Playfair Display</h2>
+      <p>High-contrast Didone serif — sharp, editorial, a bit formal. Also a callback to the original reference site's own display type.</p>
+    </div>
+
+    <div class="concept">
+      <div class="mark-frame">
+        <div class="blend-mark f-fraunces">
+          <span class="j">J</span><span class="d">D</span>
+        </div>
+      </div>
+      <h2>Fraunces</h2>
+      <p>Soft, warm, slightly quirky serif with rounded ink-traps. Feels more contemporary and human than Playfair.</p>
+    </div>
+
+    <div class="concept">
+      <div class="mark-frame">
+        <div class="blend-mark f-bebas">
+          <span class="j">J</span><span class="d">D</span>
+        </div>
+      </div>
+      <h2>Bebas Neue</h2>
+      <p>Tall, condensed, poster-like. Boldest structural contrast to the page's wider grotesque type — reads more graphic than editorial.</p>
+    </div>
+
+    <div class="concept">
+      <div class="mark-frame">
+        <div class="blend-mark f-instrument">
+          <span class="j">J</span><span class="d">D</span>
+        </div>
+      </div>
+      <h2>Instrument Serif</h2>
+      <p>Elegant, thin-contrast modern serif — trendy in current tech/SaaS branding. Lighter and more delicate than the other three.</p>
+    </div>
+
+  </div>
+</body>
+</html>

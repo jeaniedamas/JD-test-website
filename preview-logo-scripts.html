@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Preview: JD Logo Scripts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Schibsted+Grotesk:wght@700;800&family=Pinyon+Script&family=Berkshire+Swash&family=Yellowtail&family=Caveat:wght@600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --cream:  #FEF5EA;
+    --orange: #056571;
+    --pink:   #FF6A5C;
+    --ink:    #0A0A0A;
+    --paper:  #FFFFFF;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    font-family: 'Inter', sans-serif;
+    color: var(--ink);
+    padding: 48px 24px;
+  }
+  h1 {
+    text-align: center;
+    font-family: 'Schibsted Grotesk', sans-serif;
+    font-weight: 800;
+    font-size: 2rem;
+    letter-spacing: -0.02em;
+    margin: 0 0 8px;
+  }
+  .sub {
+    text-align: center;
+    color: rgba(10,10,10,0.6);
+    margin: 0 0 48px;
+    font-size: 1rem;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 28px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .concept {
+    background: var(--cream);
+    border-radius: 20px;
+    padding: 40px 24px 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+  .mark-frame {
+    width: 220px;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .concept h2 {
+    font-family: 'Schibsted Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+  .concept p {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: rgba(10,10,10,0.7);
+    text-align: center;
+  }
+
+  .blend-mark {
+    position: relative;
+    width: 190px;
+    height: 160px;
+  }
+  .blend-mark span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    line-height: 1;
+  }
+  .blend-mark .j {
+    color: var(--pink);
+    mix-blend-mode: multiply;
+  }
+  .blend-mark .d {
+    color: var(--orange);
+    mix-blend-mode: multiply;
+  }
+
+  /* Per-font tuning: script faces vary hugely in proportion and need individual offsets */
+  .f-pinyon .j, .f-pinyon .d { font-family: 'Pinyon Script', cursive; font-weight: 400; font-size: 9rem; }
+  .f-pinyon .j { transform: translate(-68%, -60%); }
+  .f-pinyon .d { transform: translate(-32%, -48%); }
+
+  .f-berkshire .j, .f-berkshire .d { font-family: 'Berkshire Swash', cursive; font-weight: 400; font-size: 6rem; }
+  .f-berkshire .j { transform: translate(-74%, -54%); }
+  .f-berkshire .d { transform: translate(-26%, -54%); }
+
+  .f-yellowtail .j, .f-yellowtail .d { font-family: 'Yellowtail', cursive; font-weight: 400; font-size: 6.6rem; }
+  .f-yellowtail .j { transform: translate(-72%, -58%); }
+  .f-yellowtail .d { transform: translate(-28%, -50%); }
+
+  .f-caveat .j, .f-caveat .d { font-family: 'Caveat', cursive; font-weight: 700; font-size: 8rem; }
+  .f-caveat .j { transform: translate(-70%, -58%); }
+  .f-caveat .d { transform: translate(-30%, -52%); }
+</style>
+</head>
+<body>
+  <h1>JD Logo — Script Options</h1>
+  <p class="sub">Same "Blend" overlap concept, four cursive/script directions — from formal calligraphy to casual handwriting.</p>
+  <div class="grid">
+
+    <div class="concept">
+      <div class="mark-frame">
+        <div class="blend-mark f-pinyon">
+          <span class="j">J</span><span class="d">D</span>
+        </div>
+      </div>
+      <h2>Pinyon Script</h2>
+      <p>Formal, flowing calligraphy with dramatic flourishes — the most elegant/traditional of the four, like an engraved monogram.</p>
+    </div>
+
+    <div class="concept">
+      <div class="mark-frame">
+        <div class="blend-mark f-berkshire">
+          <span class="j">J</span><span class="d">D</span>
+        </div>
+      </div>
+      <h2>Berkshire Swash</h2>
+      <p>Bold, swashy, and much more legible at small sizes than a true script — reads as a confident signature rather than handwriting.</p>
+    </div>
+
+    <div class="concept">
+      <div class="mark-frame">
+        <div class="blend-mark f-yellowtail">
+          <span class="j">J</span><span class="d">D</span>
+        </div>
+      </div>
+      <h2>Yellowtail</h2>
+      <p>Retro brush-script, mid-century feel, single confident stroke weight — casual-elegant, a bit playful.</p>
+    </div>
+
+    <div class="concept">
+      <div class="mark-frame">
+        <div class="blend-mark f-caveat">
+          <span class="j">J</span><span class="d">D</span>
+        </div>
+      </div>
+      <h2>Caveat</h2>
+      <p>Genuine handwriting feel — the most personal and approachable, least "designed." Good if you want warmth over polish.</p>
+    </div>
+
+  </div>
+</body>
+</html>

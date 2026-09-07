@@ -1,0 +1,540 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Jean Damas</title>
+<meta name="description" content="Content marketing and editorial leader building content functions for B2B SaaS companies that don't just produce — they perform." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Karla:wght@400;500;600;700&family=Schibsted+Grotesk:wght@700;800&family=Pacifico&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    --cream:  #FEF5EA;
+    --orange: #056571;
+    --gray:   #CCDFCB;
+    --pink:   #FF6A5C;
+    --amber:  #FFB567;
+    --ink:    #0A0A0A;
+    --paper:  #FFFFFF;
+
+    --radius: 20px;
+    --gap: 24px;
+    --pad: clamp(20px, 3.1vw, 56px);
+  }
+
+  * { box-sizing: border-box; -webkit-font-smoothing: inherit; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--paper);
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Progressive squircle corners, matching the source site's own
+     `@supports (corner-shape: superellipse(2))` feature detection. */
+  @supports (corner-shape: superellipse(2)) {
+    .card { corner-shape: superellipse(2); }
+  }
+
+  .page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--gap);
+  }
+
+  .bento {
+    width: 100%;
+    max-width: 1760px;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(3, clamp(150px, 21vw, 310px));
+    grid-template-areas:
+      "intro intro intro about about about"
+      "intro intro intro cases cases cases"
+      "caps  caps  caps  caps  talk  talk";
+    gap: var(--gap);
+  }
+
+  .card {
+    position: relative;
+    border-radius: var(--radius);
+    overflow: hidden;
+    padding: var(--pad);
+    display: flex;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  a.card {
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  a.card:hover {
+    transform: translateY(-4px);
+  }
+
+  a.card:active {
+    transform: translateY(-1px) scale(0.995);
+    transition-duration: 0.15s;
+  }
+
+  a.card:focus-visible {
+    outline: none;
+    transform: translateY(-4px);
+  }
+
+  /* Per-card tinted, layered shadows (never a flat shadow-md) */
+  .card--intro:hover, .card--intro:focus-visible {
+    box-shadow: 0 18px 34px -14px rgba(120, 95, 50, 0.28), 0 6px 12px -6px rgba(120, 95, 50, 0.18);
+  }
+  .card--about:hover, .card--about:focus-visible {
+    box-shadow: 0 18px 34px -14px rgba(5, 101, 113, 0.45), 0 6px 12px -6px rgba(5, 101, 113, 0.3);
+  }
+  .card--cases:hover, .card--cases:focus-visible {
+    box-shadow: 0 18px 34px -14px rgba(90, 120, 95, 0.32), 0 6px 12px -6px rgba(90, 120, 95, 0.2);
+  }
+  .card--caps:hover, .card--caps:focus-visible {
+    box-shadow: 0 18px 34px -14px rgba(230, 90, 74, 0.4), 0 6px 12px -6px rgba(230, 90, 74, 0.26);
+  }
+  .card--talk:hover, .card--talk:focus-visible {
+    box-shadow: 0 18px 34px -14px rgba(196, 108, 12, 0.4), 0 6px 12px -6px rgba(196, 108, 12, 0.28);
+  }
+
+  a.card:focus-visible {
+    box-shadow: 0 0 0 3px var(--paper), 0 0 0 6px rgba(10, 10, 10, 0.7);
+  }
+
+  /* --- Intro card --- */
+  .card--intro {
+    grid-area: intro;
+    background: var(--cream);
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+  }
+  .intro-media {
+    display: flex;
+    align-items: center;
+    gap: clamp(10px, 1.4vw, 18px);
+    margin-bottom: clamp(16px, 2vw, 28px);
+  }
+  .intro-avatar {
+    width: clamp(180px, 30vw, 340px);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .intro-avatar img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .intro-logo {
+    position: relative;
+    width: clamp(130px, 20vw, 220px);
+    height: clamp(120px, 18vw, 200px);
+    flex-shrink: 0;
+  }
+  .intro-logo span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-family: 'Pacifico', cursive;
+    font-weight: 400;
+    font-size: clamp(4.4rem, 8.9vw, 7.9rem);
+    line-height: 1;
+  }
+  .intro-logo .j {
+    color: var(--pink);
+    transform: translate(-84%, -62%);
+    mix-blend-mode: multiply;
+  }
+  .intro-logo .d {
+    color: var(--orange);
+    transform: translate(-14%, -44%);
+    mix-blend-mode: multiply;
+  }
+  .card--intro p {
+    margin: 0;
+    max-width: none;
+    font-family: 'Karla', sans-serif;
+    font-weight: 400;
+    font-size: clamp(1rem, 1.5vw, 1.25rem);
+    line-height: 1.6;
+    color: rgba(10, 10, 10, 0.86);
+  }
+
+  /* --- Heading cards (About / Portfolio / Services / Let's Talk) --- */
+  .card--about, .card--cases, .card--caps, .card--talk {
+    align-items: flex-end;
+  }
+  .card--about { grid-area: about; background: var(--orange); }
+  .card--about h2 { color: var(--paper); }
+  .card--cases { grid-area: cases; background: var(--gray); }
+  .card--caps  { grid-area: caps;  background: var(--pink); }
+  .card--talk  { grid-area: talk;  background: var(--amber); }
+
+  .card h2 {
+    margin: 0;
+    font-family: 'Schibsted Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: clamp(2.5rem, 4.75vw, 5.5rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  /* --- Reduced motion --- */
+  @media (prefers-reduced-motion: reduce) {
+    .card { transition: none; }
+  }
+
+  /* --- Responsive: stack on narrow viewports --- */
+  @media (max-width: 860px) {
+    :root { --gap: 14px; --radius: 16px; }
+    .page { padding: 14px; align-items: flex-start; }
+    .bento {
+      grid-template-columns: 1fr;
+      grid-template-rows: none;
+      grid-template-areas:
+        "intro"
+        "about"
+        "cases"
+        "caps"
+        "talk";
+    }
+    .card { min-height: 220px; }
+    .floating-menu { top: 14px; right: 14px; }
+  }
+
+  /* --- Floating morph menu --- */
+  .floating-menu {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 200;
+    width: 150px;
+    height: 48px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 72px;
+    background: rgba(255, 181, 103, 0.8);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(219, 151, 72, 0.7);
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 1px 2px rgba(10, 10, 10, 0.08), 0 10px 24px -12px rgba(10, 10, 10, 0.3);
+    transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                height 0.15s cubic-bezier(0.22, 1, 0.36, 1),
+                border-radius 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.3s ease,
+                transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .floating-menu:hover {
+    transform: scale(1.05);
+  }
+  .floating-menu.is-open {
+    width: 280px;
+    height: 260px;
+    border-radius: 32px;
+    border: none;
+    cursor: default;
+    transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                height 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                border-radius 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                border-color 0.3s ease,
+                box-shadow 0.3s ease;
+  }
+  .floating-menu.is-open:hover {
+    transform: none;
+  }
+
+  .floating-menu-circle {
+    position: absolute;
+    left: 50%;
+    bottom: -200%;
+    width: 200%;
+    height: 200%;
+    border-radius: 50%;
+    background: rgba(5, 101, 113, 0.82);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    transform: translateX(-50%);
+    transition: bottom 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .floating-menu.is-open .floating-menu-circle {
+    bottom: -20%;
+    transition-delay: 0.1s;
+  }
+
+  .floating-menu-links {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    flex: 0;
+    min-height: 0;
+    overflow: hidden;
+    padding: 0 20px;
+  }
+  .floating-menu.is-open .floating-menu-links {
+    flex: 1;
+  }
+
+  .floating-menu-link {
+    position: relative;
+    display: flex;
+    color: var(--cream);
+    font-family: 'Schibsted Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    text-decoration: none;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+  }
+  .floating-menu.is-open .floating-menu-link {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .floating-menu.is-open .floating-menu-link:nth-child(1) { transition-delay: 0.4s; }
+  .floating-menu.is-open .floating-menu-link:nth-child(2) { transition-delay: 0.48s; }
+  .floating-menu.is-open .floating-menu-link:nth-child(3) { transition-delay: 0.56s; }
+  .floating-menu.is-open .floating-menu-link:nth-child(4) { transition-delay: 0.64s; }
+  .floating-menu-link:focus-visible {
+    outline: 2px solid var(--cream);
+    outline-offset: 4px;
+    border-radius: 2px;
+  }
+
+  /* Per-character hover flip, built by JS into nested spans */
+  .fm-char {
+    display: inline-block;
+    overflow: hidden;
+    height: 1em;
+  }
+  .fm-char-inner {
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .floating-menu-link:hover .fm-char-inner {
+    transform: translateY(-50%);
+  }
+  .fm-char-line {
+    display: block;
+    height: 1em;
+    line-height: 1em;
+  }
+
+  .floating-menu-bar {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 48px;
+    flex-shrink: 0;
+    padding: 0 20px;
+    background: none;
+    border: none;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    transition: padding-bottom 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .floating-menu.is-open .floating-menu-bar {
+    padding-bottom: 20px;
+  }
+  .floating-menu-label {
+    font-family: 'Pacifico', cursive;
+    font-size: 1.35rem;
+    font-weight: 400;
+    color: var(--ink);
+    transition: color 0.3s ease;
+  }
+  .floating-menu.is-open .floating-menu-label {
+    color: var(--cream);
+  }
+
+  .floating-menu-burger {
+    position: relative;
+    width: 18px;
+    height: 14px;
+    flex-shrink: 0;
+  }
+  .floating-menu-burger span {
+    position: absolute;
+    left: 0;
+    width: 18px;
+    height: 2px;
+    border-radius: 999px;
+    background: var(--ink);
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+                top 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+                background-color 0.3s ease;
+  }
+  .floating-menu-burger span:nth-child(1) { top: 3px; }
+  .floating-menu-burger span:nth-child(2) { top: 9px; }
+  .floating-menu.is-open .floating-menu-burger span {
+    background: var(--cream);
+  }
+  .floating-menu.is-open .floating-menu-burger span:nth-child(1) {
+    top: 6px;
+    transform: rotate(45deg);
+  }
+  .floating-menu.is-open .floating-menu-burger span:nth-child(2) {
+    top: 6px;
+    transform: rotate(-45deg);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .floating-menu,
+    .floating-menu.is-open,
+    .floating-menu-circle,
+    .floating-menu-link,
+    .floating-menu-bar,
+    .floating-menu-burger span,
+    .fm-char-inner {
+      transition: none;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="floating-menu" id="floatingMenu">
+    <span class="floating-menu-circle" aria-hidden="true"></span>
+    <nav class="floating-menu-links" id="floatingMenuLinks" aria-label="Site">
+      <a class="floating-menu-link" href="about.html" tabindex="-1">About</a>
+      <a class="floating-menu-link" href="portfolio.html" tabindex="-1">Portfolio</a>
+      <a class="floating-menu-link" href="services.html" tabindex="-1">Services</a>
+      <a class="floating-menu-link" href="lets-talk.html" tabindex="-1">Let's Talk</a>
+    </nav>
+    <button class="floating-menu-bar" id="floatingMenuToggle" type="button" aria-expanded="false" aria-controls="floatingMenuLinks">
+      <span class="floating-menu-label">Menu</span>
+      <span class="floating-menu-burger" aria-hidden="true"><span></span><span></span></span>
+    </button>
+  </div>
+
+  <main class="page">
+    <div class="bento">
+      <section class="card card--intro">
+        <div class="intro-media">
+          <div class="intro-avatar">
+            <img src="brand_assets/headshot%202%20(1).jpg" alt="Portrait of Jean Damas" />
+          </div>
+          <div class="intro-logo" aria-hidden="true">
+            <span class="j">J</span><span class="d">D</span>
+          </div>
+        </div>
+        <p>I'm Jean Damas, a journalism-trained content marketing leader and editorial strategist who builds the systems — contributor networks, AI-powered workflows, and search strategy — that turn content into growth for B2B SaaS companies.</p>
+      </section>
+
+      <a class="card card--about" href="about.html" aria-label="About">
+        <h2>About</h2>
+      </a>
+
+      <a class="card card--cases" href="portfolio.html" aria-label="Portfolio">
+        <h2>Portfolio</h2>
+      </a>
+
+      <a class="card card--caps" href="services.html" aria-label="Services">
+        <h2>Services</h2>
+      </a>
+
+      <a class="card card--talk" href="lets-talk.html" aria-label="Let's Talk">
+        <h2>Let's Talk</h2>
+      </a>
+    </div>
+  </main>
+
+  <script>
+    (function () {
+      // Split each nav link's text into per-character spans so hover can
+      // flip each letter up (like a rolodex), staggered left to right.
+      document.querySelectorAll('.floating-menu-link').forEach(function (link) {
+        var text = link.textContent;
+        link.setAttribute('aria-label', text);
+        link.textContent = '';
+        text.split('').forEach(function (ch, i) {
+          var outer = document.createElement('span');
+          outer.className = 'fm-char';
+          var inner = document.createElement('span');
+          inner.className = 'fm-char-inner';
+          inner.style.transitionDelay = (30 * i) + 'ms';
+          var line1 = document.createElement('span');
+          line1.className = 'fm-char-line';
+          line1.textContent = ch === ' ' ? ' ' : ch;
+          var line2 = line1.cloneNode(true);
+          line2.setAttribute('aria-hidden', 'true');
+          inner.appendChild(line1);
+          inner.appendChild(line2);
+          outer.appendChild(inner);
+          link.appendChild(outer);
+        });
+      });
+    })();
+  </script>
+
+  <script>
+    (function () {
+      var menu = document.getElementById('floatingMenu');
+      var toggle = document.getElementById('floatingMenuToggle');
+      var links = document.querySelectorAll('.floating-menu-link');
+      if (!menu || !toggle) return;
+
+      function setOpen(open) {
+        menu.classList.toggle('is-open', open);
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        links.forEach(function (l) { l.tabIndex = open ? 0 : -1; });
+      }
+
+      toggle.addEventListener('click', function (e) {
+        e.stopPropagation();
+        setOpen(!menu.classList.contains('is-open'));
+      });
+
+      // Clicking anywhere else on the pill opens it (mirrors the source component).
+      menu.addEventListener('click', function () {
+        if (!menu.classList.contains('is-open')) setOpen(true);
+      });
+
+      document.addEventListener('click', function (e) {
+        if (menu.classList.contains('is-open') && !menu.contains(e.target)) {
+          setOpen(false);
+        }
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && menu.classList.contains('is-open')) {
+          setOpen(false);
+          toggle.focus();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
