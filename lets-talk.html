@@ -221,6 +221,44 @@
   @media (prefers-reduced-motion: reduce) {
     .talk-submit, .talk-submit-icon { transition: none; }
   }
+  .form-success,
+  .form-error {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 12px 14px;
+    border-radius: 10px;
+  }
+  .form-success {
+    color: #295D5A;
+    background: rgba(50, 116, 113, 0.1);
+    border: 1.5px solid rgba(50, 116, 113, 0.3);
+  }
+  .form-error {
+    color: #B3261E;
+    background: rgba(179, 38, 30, 0.08);
+    border: 1.5px solid rgba(179, 38, 30, 0.25);
+  }
+  .form-error:empty {
+    display: none;
+  }
+  .field-error {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #B3261E;
+  }
+  .field-error:empty {
+    display: none;
+  }
+  .field input[aria-invalid="true"],
+  .field textarea[aria-invalid="true"] {
+    border-color: #B3261E;
+  }
+  .talk-submit:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+  }
 
   /* --- Avatar with LinkedIn badge --- */
   .talk-linkedin {
@@ -499,29 +537,31 @@
           <img class="talk-avatar-badge" src="brand_assets/linkedin-app-icon.jpeg" alt="" aria-hidden="true" />
         </a>
 
-        <!--
-          TODO: replace this form's action with your form service endpoint
-          (e.g. Formspree: https://formspree.io/f/your-id, or a Netlify Forms
-          setup) once it's ready. Currently a placeholder that goes nowhere.
-        -->
-        <form class="talk-form" action="#" method="POST">
+        <form id="talk-form" class="talk-form" action="https://formspree.io/f/meaekjzr" method="POST">
+          <div data-fs-success class="form-success" hidden>Thanks for reaching out — I'll get back to you soon.</div>
+          <div data-fs-error class="form-error"></div>
+
           <div class="field">
             <label for="first-name">First Name</label>
-            <input type="text" id="first-name" name="first_name" autocomplete="given-name" required />
+            <input type="text" id="first-name" name="first_name" autocomplete="given-name" required data-fs-field />
+            <span class="field-error" data-fs-error="first_name"></span>
           </div>
           <div class="field">
             <label for="last-name">Last Name</label>
-            <input type="text" id="last-name" name="last_name" autocomplete="family-name" required />
+            <input type="text" id="last-name" name="last_name" autocomplete="family-name" required data-fs-field />
+            <span class="field-error" data-fs-error="last_name"></span>
           </div>
           <div class="field">
             <label for="email">Email Address</label>
-            <input type="email" id="email" name="email" autocomplete="email" required />
+            <input type="email" id="email" name="email" autocomplete="email" required data-fs-field />
+            <span class="field-error" data-fs-error="email"></span>
           </div>
           <div class="field">
             <label for="message">Message</label>
-            <textarea id="message" name="message" required></textarea>
+            <textarea id="message" name="message" required data-fs-field></textarea>
+            <span class="field-error" data-fs-error="message"></span>
           </div>
-          <button class="talk-submit" type="submit">
+          <button class="talk-submit" type="submit" data-fs-submit-btn>
             <span class="talk-submit-label">Let's collaborate</span>
             <span class="talk-submit-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M7 17L17 7M7 7h10v10"/></svg>
@@ -597,5 +637,11 @@
       });
     })();
   </script>
+
+  <script>
+    window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+    formspree('initForm', { formElement: '#talk-form', formId: 'meaekjzr' });
+  </script>
+  <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 </body>
 </html>
